@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Project.MVCUI.Areas
+namespace Project.MVCUI.Areas.Home.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        // GET: Home/Home
         public ActionResult Index()
         {
             return View();
