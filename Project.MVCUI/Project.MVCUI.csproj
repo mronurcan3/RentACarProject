@@ -213,6 +213,10 @@
     <Content Include="Outer\car-rental-html-template\team.html" />
     <Content Include="Outer\car-rental-html-template\testimonial.html" />
     <Content Include="Pictures\img_tree.png" />
+    <Content Include="Pictures\mclaren_gt_superlight_2019_4k_8k_5-HD.jpg" />
+    <Content Include="Pictures\mersedes-7680x4320-mersedes-17523.jpg" />
+    <Content Include="Pictures\rolls-royce-wraith-black-badge-7680x4320-geneva-auto-show-2016-luxury-9608.jpg" />
+    <Content Include="Pictures\wallpapersden.com_bmw-750i-black-ice-edition-2017_7680x4320.jpg" />
     <Content Include="Pictures\wallpapersden.com_daniel-craig-007-james-bond-aston-martin-car-photoshoot_7680x4320.ico" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -321,6 +325,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="TailwindColorTest\tailwind.config.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
