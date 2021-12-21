@@ -13,5 +13,11 @@ namespace Project.MVCUI.Areas.Home.Controllers
         {
             return View();
         }
+
+
+       public ActionResult Test()
+       { 
+            return View();
+       }    
     }
 }

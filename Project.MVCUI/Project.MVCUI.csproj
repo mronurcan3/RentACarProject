@@ -314,6 +314,7 @@
     <Content Include="Outer\car-rental-html-template\scss\bootstrap\scss\_type.scss" />
     <Content Include="Outer\car-rental-html-template\scss\bootstrap\scss\_utilities.scss" />
     <Content Include="Outer\car-rental-html-template\scss\bootstrap\scss\_variables.scss" />
+    <Content Include="Areas\Home\Views\Home\Test.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
