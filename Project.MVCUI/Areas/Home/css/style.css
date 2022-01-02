@@ -1,0 +1,38 @@
+﻿.carousel {
+
+    position: relative;
+    height: 600px;
+    width: 80%;
+    margin: 0 auto;
+
+}
+
+.carousel__image{
+
+    width:100%;
+
+}
+
+.carousel__track-contanier{
+
+    background:#1312ae;
+    padding: 10px;
+    height: 100%;
+
+
+}
+
+.carousel__track{
+    padding:0;
+    margin:0;
+    list-style:none;
+
+}
+
+.carousel__slide{
+
+    position:absolute;
+    top:0;
+    bottom:0;
+    width: 100%;
+}
