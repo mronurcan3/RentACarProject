@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Home\Controllers\HomeController.cs" />
     <Compile Include="Areas\Home\HomeAreaRegistration.cs" />
+    <Compile Include="Areas\Home\ModelVM\VehicleVM.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -213,6 +214,8 @@
     <Content Include="Outer\car-rental-html-template\service.html" />
     <Content Include="Outer\car-rental-html-template\team.html" />
     <Content Include="Outer\car-rental-html-template\testimonial.html" />
+    <Content Include="Pictures\0e529d1da09e-removebg-preview.png" />
+    <Content Include="Pictures\37-377548_8k-wallpaper-of-2019-bmw-m5-competition-edition-removebg-preview.png" />
     <Content Include="Pictures\img_tree.png" />
     <Content Include="Pictures\mclaren_gt_superlight_2019_4k_8k_5-HD.jpg" />
     <Content Include="Pictures\mersedes-7680x4320-mersedes-17523.jpg" />
@@ -318,6 +321,7 @@
     <Content Include="Areas\Home\Views\Home\Test.cshtml" />
     <Content Include="Areas\Home\Views\Home\Test2.cshtml" />
     <Content Include="Areas\Home\Views\Home\Test3.cshtml" />
+    <Content Include="Areas\Home\Views\Home\Test4.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
