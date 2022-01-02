@@ -273,7 +273,7 @@
             </div>
 
 
-
+            <!--social media links-->
             <div class="flex items-center text-teal-600">
                 <a class=" flex " href="">
                     <svg role="img" stroke="currentColor" class="h-6 w-6 mr-6 fill-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
@@ -311,117 +311,104 @@
 
 
 
-        </div>
-        <!--
-        <a class="" href="">
-            <i class=""></i>
-        </a>
-        <a class="" href="">
-            <i class=""></i>
-        </a>
-        <a class="t" href="">
-            <i class=""></i>
-        </a>
-        <a class="" href="">
-            <i class=""></i>
-        </a>
-        -->
+        </div>      
     </header>
     <!-- Topbar End -->
     <!-- Navbar Start -->
 
+    <nav>
+        <div class="flex justify-between bg-myblue-200 text-mywhite">
 
-    <div class="flex justify-between bg-myblue-200 text-mywhite">
+            <a href="" class="">
+                <h1 class="inline-flex p-2 text-xl font-bold uppercase tracking-wider ">Royal Motors</h1>
+            </a>
+            
+                <div class="flex">
+                    
+                    <nav>
+                        <!--container-->
+                        <div class="container px-4 flex flex-wrap mx-auto py-2 lg:space-x-2">
+                            <!--brand-->
+                            <!--brand-->
+                            <!--toggler btn-->
+                            <button class=" lg:hidden inline-flex items-center justify-center border h-100 w-10 rounded-md outline-none focus:outline-none ml-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                            </button>
 
-        <a href="" class="">
-            <h1 class="inline-flex p-2 text-xl font-bold uppercase tracking-wider ">Royal Motors</h1>
-        </a>
-        <div class="flex ">
-            <div class="flex">
-                <!--dropdown menu test start-->
-                <nav>
-                    <!--container-->
-                    <div class="container px-4 flex flex-wrap mx-auto py-2 lg:space-x-2">
-                        <!--brand-->
-                        <!--brand-->
-                        <!--toggler btn-->
-                        <button class=" lg:hidden inline-flex items-center justify-center border h-100 w-10 rounded-md outline-none focus:outline-none ml-auto">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        </button>
-
-                        <!--menu-->
-                        <div class="w-full lg:inline-flex lg:w-auto mt-2 lg:mt-0">
-                            <ul class="grid grid-cols-5 lg:flex-row lg:space-x-2 space-y-2 lg:space-y-0">
-                                <li class="hover:bg-myorange rounded-md">
-                                    <a href="#" class="flex px-4 py-2 font-weight-medium pl-6">Home</a>
-                                </li>
-                                <li class="hover:bg-myorange rounded-md">
-                                    <a href="#" class="flex px-4 py-2 font-weight-medium pl-6 ">About</a>
-                                </li>
-                                <li class="relative hover:bg-myorange rounded-md" id="btnCars">
-                                    <button href="#" class="flex px-4 py-2 font-weight-medium  pl-6 ">Cars</button>
-                                    <!--dropdown menu start-->
-                                    <div class="lg:absolute bg-myblue-200 rounded-md p-2  left-1 hidden" id="dPDCars">
-                                        <ul class="space-y-2 lg:w-48">
-                                            <li>
-                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Listing</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Detail</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Booking</a>
-                                            </li>
-                                        </ul>
-
-
-                                    </div>
-
-                                    <!--dropdown menu end-->
-                                </li>
+                            <!--menu-->
+                            <div class="w-full lg:inline-flex lg:w-auto mt-2 lg:mt-0">
+                                <ul class="grid grid-cols-5 lg:flex-row lg:space-x-2 space-y-2 lg:space-y-0">
+                                    <li class="hover:bg-myorange rounded-md">
+                                        <a href="/Home/Home/Index" class="flex px-4 py-2 font-weight-medium pl-6">Home</a>
+                                    </li>
+                                    <li class="hover:bg-myorange rounded-md">
+                                        <a href="#" class="flex px-4 py-2 font-weight-medium pl-6 ">About</a>
+                                    </li>
+                                    <li class="relative hover:bg-myorange rounded-md" id="btnCars">
+                                        <button href="#" class="flex px-4 py-2 font-weight-medium  pl-6 ">Cars</button>
+                                        <!--dropdown menu start-->
+                                        <div class="lg:absolute bg-myblue-200 rounded-md p-2  left-1 hidden" id="dPDCars">
+                                            <ul class="space-y-2 lg:w-48">
+                                                <li>
+                                                    <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Listing</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Detail</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Booking</a>
+                                                </li>
+                                            </ul>
 
 
+                                        </div>
 
-                                <li class="relative hover:bg-myorange  rounded-md" id="btnPages">
-                                    <button href="#" class="flex px-4 py-2 font-weight-medium pl-6 ">Pages</button>
-                                    <!--dropdown menu start-->
-                                    <div class="lg:absolute bg-myblue-200 rounded-md p-2  left-1 hidden" id="dPDPages">
-                                        <ul class="space-y-2 lg:w-48">
-                                            <li>
-                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">The Team</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Testimonial</a>
-                                            </li>
-
-                                        </ul>
-
-
-                                    </div>
-
-                                    <!--dropdown menu end-->
-                                </li>
+                                        <!--dropdown menu end-->
+                                    </li>
 
 
 
+                                    <li class="relative hover:bg-myorange  rounded-md" id="btnPages">
+                                        <button href="#" class="flex px-4 py-2 font-weight-medium pl-6 ">Pages</button>
+                                        <!--dropdown menu start-->
+                                        <div class="lg:absolute bg-myblue-200 rounded-md p-2  left-1 hidden" id="dPDPages">
+                                            <ul class="space-y-2 lg:w-48">
+                                                <li>
+                                                    <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">The Team</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Testimonial</a>
+                                                </li>
 
-                                <li class="hover:bg-myorange  rounded-md">
-                                    <a href="#" class="flex px-4 py-2 font-weight-medium ">Contact</a>
-                                </li>
+                                            </ul>
 
-                            </ul>
+
+                                        </div>
+
+                                        <!--dropdown menu end-->
+                                    </li>
+
+
+
+
+                                    <li class="hover:bg-myorange  rounded-md">
+                                        <a href="#" class="flex px-4 py-2 font-weight-medium ">Contact</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+
                         </div>
+                    </nav>
+                    <!--menu-->
+                    <!--dropdown menu test end-->
+                </div>
+            
 
-                    </div>
-                </nav>
-                <!--menu-->
-                <!--dropdown menu test end-->
-            </div>
         </div>
-
-    </div>
+    </nav>
 
 
     <!--22/12/2021 burdan asagisi yapilmadi henuz-->
