@@ -11,10 +11,109 @@
     <title>Test</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!--birinci deneme-->
+    <style>
+        .carousel {
+            position: relative;
+            height: 600px;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+
+        .carousel__image {
+            width: 100%;
+            height:100%;
+            object-fit:cover;
+        }
+
+        .carousel__track-contanier {
+            background: #1312ae;
+            padding: 10px;
+            height: 100%;
+            position:relative;
+        }
+
+        .carousel__track {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .carousel__slide {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .carousel__button{
+
+            position:absolute;
+            top:50%;
+            height:200px;
+            transform:translateY(-50%);
+            background-color:transparent;
+            border:0;
+            cursor:pointer;
+        }
+
+        .carousel__button--left{
+            left: -40px;
+        }
+
+        .carousel__button--right{
+
+            right: -40px;
+        }
+
+        .carousel__button img{
+
+            width: 12px;
+        }
+
+        .carousel__nav{
+
+            /*background-color:#ff0000;*/
+            display:flex;
+            justify-content: center;                      
+            padding:10px 0;
+            
+        }
+
+        .carousel__indicator{
+            border:0;
+            border-radius: 50%;
+            width:15px;
+            height:15px;
+            background-color:rgba(0,0,0,.3);
+            margin:0 12px;
+        }
+
+        .carousel__indicator.current-slide{
+
+            background-color:rgba(0,0,0.75)
+        }
+
+
+    </style>
+
+
+    <script>
+
+       
+
+
+
+
+
+
+    </script>
 </head>
 <body>
-    <div class=""> 
-       <!--navbar goes here-->
+    <div class="">
+        <!--navbar goes here-->
 
         <nav class="bg-black">
 
@@ -22,7 +121,7 @@
 
                 <div class="flex justify-between">
 
-                    <div  class="flex">
+                    <div class="flex">
                         <!--logo-->
 
                         <div>logo</div>
@@ -52,5 +151,86 @@
 
 
     </div>
+    <div class="carousel">
+        <button class="carousel__button carousel__button--left">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+        <div class="carousel__track-contaniner">
+            <ul class="carousel__track">
+                <li class="carousel__slide">
+
+                    <img class="carousel__image" src="~/Pictures/rolls-royce-wraith-black-badge-7680x4320-geneva-auto-show-2016-luxury-9608.jpg" />
+                </li>
+                <li class="carousel__slide">
+                    <img class="carousel__image" src="~/Pictures/mclaren_gt_superlight_2019_4k_8k_5-HD.jpg" />
+                </li>
+                <li class="carousel__slide">
+                    <img class="carousel__image" src="~/Pictures/mersedes-7680x4320-mersedes-17523.jpg" />
+                </li>
+            </ul>
+        </div>
+        <button class="carousel__button carousel__button--right">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+
+        <div class="carousel__nav " style="padding-top:610px">
+
+            <button class="carousel__indicator current-slide"></button>
+            <button class="carousel__indicator"></button>
+            <button class="carousel__indicator"></button>
+
+        </div>
+
+
+    </div>
+
+    <!--ikinci deneme-->
+
+
+    <template>
+        <div>
+            <VueSlickCarousel v-bind="settings">
+                <div class="h-80 bg-red-600 text-white text-center text-4xl font-semibold p-36">Red</div>
+                <div class="h-80 bg-yellow-400 text-white text-center text-4xl font-semibold p-36">Yellow</div>
+                <div class="h-80 bg-green-400 text-white text-center text-4xl font-semibold p-36">Green</div>
+                <div class="h-80 bg-blue-600 text-white text-center text-4xl font-semibold p-36">Blue</div>
+            </VueSlickCarousel>
+
+            
+        </div>
+    </template>
+
+    <script>
+        import VueSlickCarousel from 'vue-slick-carousel'
+        import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+        // optional style for arrows & dots
+        import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+
+        export default {
+            name: 'Slider',
+            components: { VueSlickCarousel },
+            data() {
+                return {
+                    settings: {
+                        dots: true,
+                        infinite: true,
+                        rows: 1,
+                        initialSlide: 2,
+                        speed: 500,
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        swipeToSlide: true,
+                        arrows: true,
+                    },
+                }
+            },
+        }
+    </script>
+
+
 </body>
 </html>
