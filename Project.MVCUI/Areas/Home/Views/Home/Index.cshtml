@@ -1,4 +1,6 @@
-﻿@{
+﻿@model VehicleVM
+
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -311,7 +313,7 @@
 
 
 
-        </div>      
+        </div>
     </header>
     <!-- Topbar End -->
     <!-- Navbar Start -->
@@ -322,90 +324,90 @@
             <a href="" class="">
                 <h1 class="inline-flex p-2 text-xl font-bold uppercase tracking-wider ">Royal Motors</h1>
             </a>
-            
-                <div class="flex">
-                    
-                    <nav>
-                        <!--container-->
-                        <div class="container px-4 flex flex-wrap mx-auto py-2 lg:space-x-2">
-                            <!--brand-->
-                            <!--brand-->
-                            <!--toggler btn-->
-                            <button class=" lg:hidden inline-flex items-center justify-center border h-100 w-10 rounded-md outline-none focus:outline-none ml-auto">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                                </svg>
-                            </button>
 
-                            <!--menu-->
-                            <div class="w-full lg:inline-flex lg:w-auto mt-2 lg:mt-0">
-                                <ul class="grid grid-cols-5 lg:flex-row lg:space-x-2 space-y-2 lg:space-y-0">
-                                    <li class="hover:bg-myorange rounded-md">
-                                        <a href="/Home/Home/Index" class="flex px-4 py-2 font-weight-medium pl-6">Home</a>
-                                    </li>
-                                    <li class="hover:bg-myorange rounded-md">
-                                        <a href="#" class="flex px-4 py-2 font-weight-medium pl-6 ">About</a>
-                                    </li>
-                                    <li class="relative hover:bg-myorange rounded-md" id="btnCars">
-                                        <button href="#" class="flex px-4 py-2 font-weight-medium  pl-6 ">Cars</button>
-                                        <!--dropdown menu start-->
-                                        <div class="lg:absolute bg-myblue-200 rounded-md p-2  left-1 hidden" id="dPDCars">
-                                            <ul class="space-y-2 lg:w-48">
-                                                <li>
-                                                    <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Listing</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Detail</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Booking</a>
-                                                </li>
-                                            </ul>
+            <div class="flex">
 
+                <nav>
+                    <!--container-->
+                    <div class="container px-4 flex flex-wrap mx-auto py-2 lg:space-x-2">
+                        <!--brand-->
+                        <!--brand-->
+                        <!--toggler btn-->
+                        <button class=" lg:hidden inline-flex items-center justify-center border h-100 w-10 rounded-md outline-none focus:outline-none ml-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
 
-                                        </div>
-
-                                        <!--dropdown menu end-->
-                                    </li>
+                        <!--menu-->
+                        <div class="w-full lg:inline-flex lg:w-auto mt-2 lg:mt-0">
+                            <ul class="grid grid-cols-5 lg:flex-row lg:space-x-2 space-y-2 lg:space-y-0">
+                                <li class="hover:bg-myorange rounded-md">
+                                    <a href="/Home/Home/Index" class="flex px-4 py-2 font-weight-medium pl-6">Home</a>
+                                </li>
+                                <li class="hover:bg-myorange rounded-md">
+                                    <a href="#" class="flex px-4 py-2 font-weight-medium pl-6 ">About</a>
+                                </li>
+                                <li class="relative hover:bg-myorange rounded-md" id="btnCars">
+                                    <button href="#" class="flex px-4 py-2 font-weight-medium  pl-6 ">Cars</button>
+                                    <!--dropdown menu start-->
+                                    <div class="lg:absolute bg-myblue-200 rounded-md p-2  left-1 hidden" id="dPDCars">
+                                        <ul class="space-y-2 lg:w-48">
+                                            <li>
+                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Listing</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Detail</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Booking</a>
+                                            </li>
+                                        </ul>
 
 
+                                    </div>
 
-                                    <li class="relative hover:bg-myorange  rounded-md" id="btnPages">
-                                        <button href="#" class="flex px-4 py-2 font-weight-medium pl-6 ">Pages</button>
-                                        <!--dropdown menu start-->
-                                        <div class="lg:absolute bg-myblue-200 rounded-md p-2  left-1 hidden" id="dPDPages">
-                                            <ul class="space-y-2 lg:w-48">
-                                                <li>
-                                                    <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">The Team</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Testimonial</a>
-                                                </li>
-
-                                            </ul>
-
-
-                                        </div>
-
-                                        <!--dropdown menu end-->
-                                    </li>
+                                    <!--dropdown menu end-->
+                                </li>
 
 
 
+                                <li class="relative hover:bg-myorange  rounded-md" id="btnPages">
+                                    <button href="#" class="flex px-4 py-2 font-weight-medium pl-6 ">Pages</button>
+                                    <!--dropdown menu start-->
+                                    <div class="lg:absolute bg-myblue-200 rounded-md p-2  left-1 hidden" id="dPDPages">
+                                        <ul class="space-y-2 lg:w-48">
+                                            <li>
+                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">The Team</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Testimonial</a>
+                                            </li>
 
-                                    <li class="hover:bg-myorange  rounded-md">
-                                        <a href="#" class="flex px-4 py-2 font-weight-medium ">Contact</a>
-                                    </li>
+                                        </ul>
 
-                                </ul>
-                            </div>
 
+                                    </div>
+
+                                    <!--dropdown menu end-->
+                                </li>
+
+
+
+
+                                <li class="hover:bg-myorange  rounded-md">
+                                    <a href="#" class="flex px-4 py-2 font-weight-medium ">Contact</a>
+                                </li>
+
+                            </ul>
                         </div>
-                    </nav>
-                    <!--menu-->
-                    <!--dropdown menu test end-->
-                </div>
-            
+
+                    </div>
+                </nav>
+                <!--menu-->
+                <!--dropdown menu test end-->
+            </div>
+
 
         </div>
     </nav>
@@ -414,51 +416,65 @@
     <!--22/12/2021 burdan asagisi yapilmadi henuz-->
     <!-- Navbar End -->
     <!-- Search Start -->
-    <div class="container bg-white ">
-        <div class="grid grid-cols-6 space-x-2">
-            <div class="">
-                <select class=" mt-2" style="height: 50px;">
-                    <option selected>Pickup Location</option>
-                    <option value="1">Location 1</option>
-                    <option value="2">Location 2</option>
-                    <option value="3">Location 3</option>
-                </select>
-            </div>
-            <div class="">
-                <select class="  mt-2" style="height: 50px;">
-                    <option selected>Drop Location</option>
-                    <option value="1">Location 1</option>
-                    <option value="2">Location 2</option>
-                    <option value="3">Location 3</option>
-                </select>
-            </div>
-            <div class=" mt-3">
-                <div class=" mt-2" id="date">
-                    <input type="date" class="" placeholder="Pickup Date" />
-                </div>
-            </div>
-            <div class=" mt-3">
-                <div class=" mt-2" id="date">
-                    <input type="date" class="" placeholder="Pickup Date" />
-                </div>
-            </div>
-            <div class="">
-                <select class=" mt-2" style="height: 50px;">
-                    <option selected>Select A Car</option>
-                    <option value="1">Car 1</option>
-                    <option value="2">Car 1</option>
-                    <option value="3">Car 1</option>
-                </select>
-            </div>
-            <div class="">
-                <button class=" mt-2 bg-myblue-200 hover:bg-myorange text-mywhite font-bold  py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="height:50px;width:200px" type="button">
-                    Search
-                </button>
-            </div>
+
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+
+     
 
 
+
+        <div class="container bg-white ">
+            <div class="grid grid-cols-6 space-x-2">
+
+
+
+
+                <div class="">
+                    <select class=" mt-2" style="height: 50px;">
+                        <option selected>Pickup Location</option>
+                        <option value="1">Location 1</option>
+                        <option value="2">Location 2</option>
+                        <option value="3">Location 3</option>
+                    </select>
+                </div>
+                <div class="">
+                    <select class="  mt-2" style="height: 50px;">
+                        <option selected>Drop Location</option>
+                        <option value="1">Location 1</option>
+                        <option value="2">Location 2</option>
+                        <option value="3">Location 3</option>
+                    </select>
+                </div>
+                <div class=" mt-3">
+                    <div class=" mt-2" id="date">
+                        <input type="date" class="" name="date1" placeholder="Pickup Date" />
+                    </div>
+                </div>
+                <div class=" mt-3">
+                    <div class=" mt-2" id="date2">
+                        <input type="date" class="" name="date2" placeholder="Pickup Date" />
+                    </div>
+                </div>
+                <div class="">
+                    <select class=" mt-2" style="height: 50px;">
+                        <option selected>Select A Car</option>
+                        <option value="1">Car 1</option>
+                        <option value="2">Car 1</option>
+                        <option value="3">Car 1</option>
+                    </select>
+                </div>
+                <div class="">
+                    <button class=" mt-2 bg-myblue-200 hover:bg-myorange text-mywhite font-bold  py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="height:50px;width:200px">
+                        Search
+                    </button>
+                </div>
+
+
+
+            </div>
         </div>
-    </div>
+    }
     <!-- Search End -->
     <!--buraya bir carousel image slider lazim fakat yapamadim-->
     <!-- Carousel Start -->
@@ -890,7 +906,7 @@
 
                         <img class="h-48 w-72" src="~/Outer/car-rental-html-template/img/car-rent-2.png" />
 
-               
+
 
                     </div>
 
@@ -951,7 +967,7 @@
                     <div class="">
 
                         <img class="h-48 w-72" src="~/Outer/car-rental-html-template/img/car-rent-3.png" />
-                  
+
 
                     </div>
 
@@ -1209,24 +1225,27 @@
             <div class="uppercase text-3xl mt-16 ml-8">
                 <p>Get In Touch</p>
             </div>
-            <div  class="uppercase text-xl mt-2 ml-8 flex flex-row-2">
+            <div class="uppercase text-xl mt-2 ml-8 flex flex-row-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-            <p class="ml-2">Urla Izmir,35430</p></div>
-            <div  class="uppercase text-xl mt-2 ml-8 flex flex-row-2">
+                <p class="ml-2">Urla Izmir,35430</p>
+            </div>
+            <div class="uppercase text-xl mt-2 ml-8 flex flex-row-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-            
-            <p class="ml-2">+905363561235</p></div>
-            <div  class="uppercase text-xl mt-2 ml-8 flex flex-raw-2">
+
+                <p class="ml-2">+905363561235</p>
+            </div>
+            <div class="uppercase text-xl mt-2 ml-8 flex flex-raw-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="text-lime-500 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-            
-            <p class="ml-2">ourbusinessby@@gmail.com</p></div>
+
+                <p class="ml-2">ourbusinessby@@gmail.com</p>
+            </div>
 
             <div class="uppercase text-2xl ml-8 mt-4">
                 <p>Follow Us</p>
