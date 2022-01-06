@@ -1,4 +1,4 @@
-﻿@model
+﻿@model VehicleVM
 @{
     Layout = null;
 }
@@ -9,17 +9,53 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Test4</title>
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
 </head>
 <body>
-    <div> 
+    <div>
         @using (Html.BeginForm("Test4", "Home", FormMethod.Post))
-            {
+        {
 
-            @Html.TextBoxFor(Model =>)
+            @Html.TextBoxFor(Model => Model.Vehicle.CreatedDate, new { @class = "dp datepicker", Value = DateTime.Now })
+
+            <button>Send</button>
+
+        }
+
+        <script type="text/javascript">
+            $(function () { // will trigger when the document is ready
+                $('.datepicker').datepicker(); //Initialise any date pickers
+            });
+        </script>
+
+        <div class="form-group input-group-sm">
+
+            @Html.TextBoxFor(Model => Model.Vehicle.CreatedDate, new { @class = "form-control datepicker", placeholder = "Enter Drop-off date here..." })
+
+        </div>
 
 
 
-            }
+
     </div>
+    <form action="~/Home/Home/Test4">
+        <label for="birthdaytime">Birthday (date and time):</label>
+        <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+        <input type="submit">
+    </form>
+
+    @using (Html.BeginForm("Test4", "Home", FormMethod.Post))
+    {
+       
+        <input id="deneme1" name="mydata" type="datetime-local" />
+
+        <button>Send</button>
+
+    }
+
 </body>
 </html>

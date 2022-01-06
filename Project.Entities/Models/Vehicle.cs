@@ -20,6 +20,8 @@ namespace Project.Entities.Models
 
         public int Year { get; set; }
 
+        public decimal Price { get; set; }
+
         public int KM { get; set; }
 
         public string Color { get; set; }

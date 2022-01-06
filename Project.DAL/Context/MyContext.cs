@@ -1,4 +1,5 @@
-﻿using Project.Entities.Models;
+﻿using Project.DAL.StrategyPattern;
+using Project.Entities.Models;
 using Project.Map.Options;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Project.DAL.Context
 
         public MyContext():base("MyConnection")
         {
-
+            Database.SetInitializer(new MyInit());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

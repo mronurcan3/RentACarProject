@@ -9,5 +9,7 @@ namespace Project.MVCUI.Areas.Home.ModelVM
     public class VehicleVM
     {
         public Vehicle Vehicle { get; set; }
+
+        public List<Vehicle> Vehicles { get; set; }
     }
 }

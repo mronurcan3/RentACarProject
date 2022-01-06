@@ -322,6 +322,7 @@
     <Content Include="Areas\Home\Views\Home\Test2.cshtml" />
     <Content Include="Areas\Home\Views\Home\Test3.cshtml" />
     <Content Include="Areas\Home\Views\Home\Test4.cshtml" />
+    <Content Include="Areas\Home\Views\Home\Rental.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
