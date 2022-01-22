@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Project.DAL.StrategyPattern
 {
-    public class MyInit:DropCreateDatabaseAlways<MyContext>
+    public class MyInit:CreateDatabaseIfNotExists<MyContext>
     {
         protected override void Seed(MyContext context)
         {

@@ -11,226 +11,674 @@
     <title>Test</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!--birinci deneme-->
+    <script src="https://unpkg.com/vue@next"></script>
     <style>
-        .carousel {
-            position: relative;
-            height: 600px;
-            width: 80%;
-            margin: 0 auto;
+        body {
+            font-family: "Lato", sans-serif;
         }
 
-
-        .carousel__image {
-            width: 100%;
-            height:100%;
-            object-fit:cover;
-        }
-
-        .carousel__track-contanier {
-            background: #1312ae;
-            padding: 10px;
+        /* Fixed sidenav, full height */
+        .sidenav {
             height: 100%;
-            position:relative;
-        }
-
-        .carousel__track {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
-
-        .carousel__slide {
-            position: absolute;
+            width: 300px;
+            position: fixed;
+            z-index: 1;
             top: 0;
-            bottom: 0;
-            width: 100%;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 20px;
         }
 
-        .carousel__button{
+            /* Style the sidenav links and the dropdown button */
+            .sidenav a, .dropdown-btn {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #818181;
+                display: block;
+                border: none;
+                background: none;
+                width: 100%;
+                text-align: left;
+                cursor: pointer;
+                outline: none;
+            }
 
-            position:absolute;
-            top:50%;
-            height:200px;
-            transform:translateY(-50%);
-            background-color:transparent;
-            border:0;
-            cursor:pointer;
+                /* On mouse-over */
+                .sidenav a:hover, .dropdown-btn:hover {
+                    color: #f1f1f1;
+                }
+
+        /* Main content */
+        .main {
+            margin-left: 200px; /* Same as the width of the sidenav */
+            font-size: 20px; /* Increased text to enable scrolling */
+            padding: 0px 10px;
         }
 
-        .carousel__button--left{
-            left: -40px;
+        /* Add an active class to the active dropdown button */
+        .active {
+            background-color: green;
+            color: white;
         }
 
-        .carousel__button--right{
-
-            right: -40px;
+        /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+        .dropdown-container {
+            display: none;
+            background-color: #262626;
+            padding-left: 8px;
         }
 
-        .carousel__button img{
-
-            width: 12px;
+        /* Optional: Style the caret down icon */
+        .fa-caret-down {
+            float: right;
+            padding-right: 8px;
         }
 
-        .carousel__nav{
+        m
+        /* Some media queries for responsiveness */
+        @@media screen and (max-height: 450px) {
+            .sidenav
 
-            /*background-color:#ff0000;*/
-            display:flex;
-            justify-content: center;                      
-            padding:10px 0;
-            
+        {
+            padding-top: 15px;
         }
 
-        .carousel__indicator{
-            border:0;
-            border-radius: 50%;
-            width:15px;
-            height:15px;
-            background-color:rgba(0,0,0,.3);
-            margin:0 12px;
+        .sidenav a {
+            font-size: 18px;
         }
 
-        .carousel__indicator.current-slide{
-
-            background-color:rgba(0,0,0.75)
         }
 
+        .myscroll-scrollbar-thumb {
+            background: red;
+            border-radius: 10px;
+        }
+    </style>
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
 
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: red;
+            border-radius: 10px;
+        }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #b30000;
+            }
     </style>
 
-
-    <script>
-
-       
-
-
-
-
-
-
-    </script>
 </head>
 <body>
-    <div class="">
-        <!--navbar goes here-->
+    <div class="sidenav">
 
-        <nav class="bg-black">
+        <button class="dropdown-btn">
+            Gear Type
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <div class="myscroll pt-2  flex flex-raw-2 overflow-y-auto h-12">
 
-            <div class="px-8 mx-auto border border-red-400 text-white" style="height:90px">
 
-                <div class="flex justify-between">
 
-                    <div class="flex">
-                        <!--logo-->
+                <div class="grid grid-raw-2 ">
 
-                        <div>logo</div>
-                        <!--primary nav-->
-                        <div>primary nav</div>
 
-                    </div>
-                    <!--secondary nav-->
-                    <div>secondary nav</div>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    
+                    
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="grid grid-raw-2">
+
+                    <label class="main ml-2  text-white">
+                        Manuel
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+
+
 
                 </div>
 
+            </div>
+        </div>
+
+        <button class="dropdown-btn">
+            Dropdown
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <div class="myscroll  flex flex-raw-2 overflow-y-auto h-40">
+
+
+
+                <div class="grid grid-raw-2 ">
+
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="grid grid-raw-2">
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+
+
+
+                </div>
 
             </div>
-
-            <!--mobile menu-->
-
-        </nav>
-
-        <!--content goes here-->
-
-        <div class="py-32 text-center">
-
-            <h2 class="font-extrabold text-6xl">Navbars in Tailwind!</h2>
-
         </div>
 
-
-    </div>
-    <div class="carousel">
-        <button class="carousel__button carousel__button--left">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
+        <button class="dropdown-btn">
+            Dropdown
+            <i class="fa fa-caret-down"></i>
         </button>
-        <div class="carousel__track-contaniner">
-            <ul class="carousel__track">
-                <li class="carousel__slide">
+        <div class="dropdown-container">
+            <div class="myscroll  flex flex-raw-2 overflow-y-auto h-40">
 
-                    <img class="carousel__image" src="~/Pictures/rolls-royce-wraith-black-badge-7680x4320-geneva-auto-show-2016-luxury-9608.jpg" />
-                </li>
-                <li class="carousel__slide">
-                    <img class="carousel__image" src="~/Pictures/mclaren_gt_superlight_2019_4k_8k_5-HD.jpg" />
-                </li>
-                <li class="carousel__slide">
-                    <img class="carousel__image" src="~/Pictures/mersedes-7680x4320-mersedes-17523.jpg" />
-                </li>
-            </ul>
+
+
+                <div class="grid grid-raw-2 ">
+
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="grid grid-raw-2">
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+
+
+
+                </div>
+
+            </div>
         </div>
-        <button class="carousel__button carousel__button--right">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
+
+        <button class="dropdown-btn">
+            Dropdown
+            <i class="fa fa-caret-down"></i>
         </button>
+        <div class="dropdown-container">
+            <div class="myscroll  flex flex-raw-2 overflow-y-auto h-40">
 
-        <div class="carousel__nav " style="padding-top:610px">
 
-            <button class="carousel__indicator current-slide"></button>
-            <button class="carousel__indicator"></button>
-            <button class="carousel__indicator"></button>
 
+                <div class="grid grid-raw-2 ">
+
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="grid grid-raw-2">
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <button class="dropdown-btn">
+            Dropdown
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <div class="myscroll  flex flex-raw-2 overflow-y-auto h-40">
+
+
+
+                <div class="grid grid-raw-2 ">
+
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="grid grid-raw-2">
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+
+
+
+                </div>
+
+            </div>
         </div>
 
+        <button class="dropdown-btn">
+            Dropdown
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <div class="myscroll  flex flex-raw-2 overflow-y-auto h-40">
 
+
+
+                <div class="grid grid-raw-2 ">
+
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="grid grid-raw-2">
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+                    <label class="main ml-2  text-white">
+                        Automatic
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                    </label>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
     </div>
 
-    <!--ikinci deneme-->
+    
 
-
-    <template>
-        <div>
-            <VueSlickCarousel v-bind="settings">
-                <div class="h-80 bg-red-600 text-white text-center text-4xl font-semibold p-36">Red</div>
-                <div class="h-80 bg-yellow-400 text-white text-center text-4xl font-semibold p-36">Yellow</div>
-                <div class="h-80 bg-green-400 text-white text-center text-4xl font-semibold p-36">Green</div>
-                <div class="h-80 bg-blue-600 text-white text-center text-4xl font-semibold p-36">Blue</div>
-            </VueSlickCarousel>
-
-            
-        </div>
-    </template>
 
     <script>
-        import VueSlickCarousel from 'vue-slick-carousel'
-        import 'vue-slick-carousel/dist/vue-slick-carousel.css'
-        // optional style for arrows & dots
-        import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
 
-        export default {
-            name: 'Slider',
-            components: { VueSlickCarousel },
-            data() {
-                return {
-                    settings: {
-                        dots: true,
-                        infinite: true,
-                        rows: 1,
-                        initialSlide: 2,
-                        speed: 500,
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        swipeToSlide: true,
-                        arrows: true,
-                    },
-                }
-            },
-        }
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
     </script>
-
-
 </body>
 </html>

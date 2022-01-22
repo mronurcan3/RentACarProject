@@ -33,9 +33,94 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
         public ActionResult Rental()
         {
+            List<Vehicle> allVehicles = _vehicle.Where(x => x.VehicleStatus == Entities.Enums.VehicleStatus.Available);
+
+            Dictionary<string, int> myVehiclesUnits = new Dictionary<string, int>();
+
+            foreach (Vehicle item in allVehicles )
+            {
+               
+
+
+
+                if (myVehiclesUnits.ContainsKey(item.Brand))
+                {
+                    int a = myVehiclesUnits[item.Brand];
+
+                    a++;
+
+                    myVehiclesUnits[item.Brand] = a;
+
+                    
+
+                }
+
+                else myVehiclesUnits.Add(item.Brand, 1);
+
+
+
+            }
+
+            Dictionary<string, int> myVehiclesUnits2 = new Dictionary<string, int>();
+
+            foreach (Vehicle item in allVehicles)
+            {
+
+
+
+
+                if (myVehiclesUnits2.ContainsKey(item.Model))
+                {
+                    int a = myVehiclesUnits2[item.Model];
+
+                    a++;
+
+                    myVehiclesUnits2[item.Model] = a;
+
+
+
+                }
+
+                else myVehiclesUnits2.Add(item.Model, 1);
+
+
+
+            }
+
+            Dictionary<string, int> bodyTypes = new Dictionary<string, int>();
+
+            foreach (Vehicle item in allVehicles)
+            {
+
+
+
+
+                if (bodyTypes.ContainsKey(item.Body.ToString()))
+                {
+                    int a = bodyTypes[item.Body.ToString()];
+
+                    a++;
+
+                    bodyTypes[item.Body.ToString()] = a;
+
+
+
+                }
+
+                else bodyTypes.Add(item.Body.ToString(), 1);
+
+
+
+            }
+
+
+
             VehicleVM VVM = new VehicleVM()
             {
-                Vehicles = _vehicle.Where(x => x.VehicleStatus == Entities.Enums.VehicleStatus.Available)
+                Vehicles = _vehicle.Where(x => x.VehicleStatus == Entities.Enums.VehicleStatus.Available),
+                VehiclesUnits = myVehiclesUnits,
+                VehiclesUnits2 = myVehiclesUnits2,
+                BodyTypes = bodyTypes,
             };
             return View(VVM);
         }
@@ -46,56 +131,6 @@ namespace Project.MVCUI.Areas.Home.Controllers
             return View();
        }    
 
-        public ActionResult Test2()
-        {
-
-            return View();
-        }
-
-        public ActionResult Test3()
-        {
-            return View();
-        }
-
-        public ActionResult Test4()
-        {
-            VehicleVM vvm = new VehicleVM()
-            {
-                Vehicle = new Vehicle
-                {
-                    Body = Entities.Enums.BodyType.Sedan,
-                    Brand = "Mercedes",
-                    Color = "Red",
-                    CreatedDate = DateTime.Now,
-                    EngineCapacity = 2000,
-                    Fuel = Entities.Enums.FuelType.Gas,
-                    Gear = Entities.Enums.GearType.Automatic,
-                    HP = 245,
-                    Torque = 360,
-                    KM = 2000,
-                    PlateNumber = "35url35",
-                    VehicleStatus = Entities.Enums.VehicleStatus.Available,
-                    Model = "c200",
-                    Year = 2019,
-                    SeatCount = 4,
-                    MinAge = 22,
-                    MinLisenceYear = 3,
-                    Status = Entities.Enums.DataStatus.Inserted,
-                    ID = 1,
-
-                },
-            };
-
-            return View(vvm);
-        }
-
-        [HttpPost]
-
-        public ActionResult Test4(DateTime mydata)
-        {
-            DateTime ss = mydata;
-
-            return View();
-        }
+       
     }
 }
