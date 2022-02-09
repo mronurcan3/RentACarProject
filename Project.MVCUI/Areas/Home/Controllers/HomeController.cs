@@ -1,6 +1,7 @@
 ﻿using Project.BLL.DesignPatterns.GenericRepository.ConRep;
 using Project.Entities.Models;
 using Project.MVCUI.Areas.Home.ModelVM;
+using Project.MVCUI.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,15 @@ namespace Project.MVCUI.Areas.Home.Controllers
     public class HomeController : Controller
     {
         VehicleRepository _vehicle;
+        ImageRepository _image;
+
+        
+
+
         public HomeController()
         {
            _vehicle = new VehicleRepository();
+            _image = new ImageRepository();
         }
 
         // GET: Home/Home
@@ -125,12 +132,59 @@ namespace Project.MVCUI.Areas.Home.Controllers
             return View(VVM);
         }
 
+        [HttpPost]
+
+        public ActionResult Rental(string PickUp)
+        {
+             
+
+            return RedirectToAction("GetFilterCars");
+        }
+
+
+
+
+
 
        public ActionResult Test()
        { 
             return View();
-       }    
+       }
 
-       
+        public ActionResult Index2()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index2(Image testClass, HttpPostedFileBase resim)
+        {
+            testClass.ImagePath = ImageUploader.UploadImage("/Images/", resim);
+           _image.Add(testClass);
+            
+            return RedirectToAction("Index2");
+        }
+
+        public PartialViewResult GetFilterCars(string pickUpLoc,string dropOffLoc,DateTime pickUpDate, DateTime dropOffDate,string trans)
+        {
+            
+
+           
+
+            VehicleVM VVM = new VehicleVM()
+            {
+                Vehicles = _vehicle.GetActives(),
+
+                
+            };
+
+            return PartialView("_RentalCars", VVM);
+        }
+
+        
+
+        
+
+
     }
 }

@@ -17,5 +17,9 @@ namespace Project.MVCUI.Areas.Home.ModelVM
         public Dictionary<string, int> VehiclesUnits2 { get; set; }
 
         public Dictionary<string, int> BodyTypes { get; set; }
+
+        public List<Image> Images { get; set; }
+
+        public Image Image { get; set; }
     }
 }

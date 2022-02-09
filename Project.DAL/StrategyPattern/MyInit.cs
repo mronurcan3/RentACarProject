@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Project.DAL.StrategyPattern
 {
-    public class MyInit:CreateDatabaseIfNotExists<MyContext>
+    public class MyInit:DropCreateDatabaseIfModelChanges<MyContext>
     {
         protected override void Seed(MyContext context)
         {
@@ -133,36 +133,14 @@ namespace Project.DAL.StrategyPattern
             };
 
             context.AppUsers.Add(appUser4);
-            
 
-            Vehicle vehicle1 = new Vehicle()
+            Image image1 = new Image()
             {
-                PlateNumber = "35umc62",
-                VehicleStatus = Entities.Enums.VehicleStatus.Available,
-                Brand = "Mercedes",
-                Model = "C200",
-                Year = 2018,
-                KM = 25000,
-                Color = "Blue",
-                EngineCapacity = 2000,
-                HP = 245,
-                SeatCount = 5,
-                Torque = 400,
-                MinAge = 21,
-                MinLisenceYear = 3,
-                Fuel = Entities.Enums.FuelType.Gas,
-                Gear = Entities.Enums.GearType.Automatic,
-                Body = Entities.Enums.BodyType.Sedan,
-                Price = 100m,
-
-
-
-
+                Name = "Car1",
+                ImagePath = "/Outer/car-rental-html-template/img/car-rent-1.png"
             };
 
-            context.Vehicles.Add(vehicle1);
-            
-            Vehicle vehicle2 = new Vehicle()
+            Vehicle vehicle1 = new Vehicle()
             {
                 PlateNumber = "35uml62",
                 VehicleStatus = Entities.Enums.VehicleStatus.Available,
@@ -181,15 +159,26 @@ namespace Project.DAL.StrategyPattern
                 Gear = Entities.Enums.GearType.Automatic,
                 Body = Entities.Enums.BodyType.Sedan,
                 Price = 300m,
+                Image = image1
 
 
 
 
             };
+            context.Images.Add(image1);
+            context.Vehicles.Add(vehicle1);
 
-            context.Vehicles.Add(vehicle2);
+            
 
-            Vehicle vehicle3 = new Vehicle()
+           
+
+            Image image2 = new Image()
+            {
+                Name = "Car2",
+                ImagePath = "/Outer/car-rental-html-template/img/car-rent-2.png"
+            };
+
+            Vehicle vehicle2 = new Vehicle()
             {
                 PlateNumber = "35uma62",
                 VehicleStatus = Entities.Enums.VehicleStatus.Available,
@@ -208,15 +197,24 @@ namespace Project.DAL.StrategyPattern
                 Gear = Entities.Enums.GearType.Automatic,
                 Body = Entities.Enums.BodyType.Sedan,
                 Price = 200m,
+                Image = image2
 
 
 
 
             };
 
-            context.Vehicles.Add(vehicle3);
 
-            Vehicle vehicle4 = new Vehicle()
+            context.Images.Add(image2);
+            context.Vehicles.Add(vehicle2);
+
+            Image image3 = new Image()
+            {
+                Name = "Car3",
+                ImagePath = "/Outer/car-rental-html-template/img/car-rent-3.png"
+            };
+
+            Vehicle vehicle3 = new Vehicle()
             {
                 PlateNumber = "35umr62",
                 VehicleStatus = Entities.Enums.VehicleStatus.Available,
@@ -235,15 +233,23 @@ namespace Project.DAL.StrategyPattern
                 Gear = Entities.Enums.GearType.Automatic,
                 Body = Entities.Enums.BodyType.Sedan,
                 Price = 400m,
+                Image = image3
 
 
 
 
             };
 
-            context.Vehicles.Add(vehicle4);
+            context.Images.Add(image3);
+            context.Vehicles.Add(vehicle3);
 
-            Vehicle vehicle5 = new Vehicle()
+            Image image4 = new Image()
+            {
+                Name = "Car4",
+                ImagePath = "/Outer/car-rental-html-template/img/car-rent-4.png"
+            };
+
+            Vehicle vehicle4 = new Vehicle()
             {
                 PlateNumber = "35umk62",
                 VehicleStatus = Entities.Enums.VehicleStatus.Available,
@@ -262,13 +268,57 @@ namespace Project.DAL.StrategyPattern
                 Gear = Entities.Enums.GearType.Automatic,
                 Body = Entities.Enums.BodyType.Sedan,
                 Price = 90m,
+                Image = image4
 
 
 
 
             };
 
+            context.Images.Add(image4);
+
+            context.Vehicles.Add(vehicle4);
+
+            Image image5 = new Image()
+            {
+                Name = "Car5",
+                ImagePath = "/Outer/car-rental-html-template/img/car-rent-5.png"
+            };
+
+            Vehicle vehicle5 = new Vehicle()
+            {
+                PlateNumber = "35umc62",
+                VehicleStatus = Entities.Enums.VehicleStatus.Available,
+                Brand = "Mercedes",
+                Model = "C200",
+                Year = 2018,
+                KM = 25000,
+                Color = "Blue",
+                EngineCapacity = 2000,
+                HP = 245,
+                SeatCount = 5,
+                Torque = 400,
+                MinAge = 21,
+                MinLisenceYear = 3,
+                Fuel = Entities.Enums.FuelType.Gas,
+                Gear = Entities.Enums.GearType.Automatic,
+                Body = Entities.Enums.BodyType.Sedan,
+                Price = 100m,
+                Image = image5,
+
+
+
+
+            };
+
+            context.Images.Add(image5);
             context.Vehicles.Add(vehicle5);
+
+            Image image6 = new Image()
+            {
+                Name = "Car6",
+                ImagePath = "/Outer/car-rental-html-template/img/car-rent-6.png"
+            };
 
             Vehicle vehicle6 = new Vehicle()
             {
@@ -289,12 +339,14 @@ namespace Project.DAL.StrategyPattern
                 Gear = Entities.Enums.GearType.Automatic,
                 Body = Entities.Enums.BodyType.Sedan,
                 Price = 370m,
+                Image= image6,
+                
 
 
 
 
             };
-
+            context.Images.Add(image6);
             context.Vehicles.Add(vehicle6);
             
 

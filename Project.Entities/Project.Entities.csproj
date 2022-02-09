@@ -51,6 +51,7 @@
     <Compile Include="Enums\UserRole.cs" />
     <Compile Include="Models\AppUser.cs" />
     <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Rental.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Models\UserRental.cs" />
