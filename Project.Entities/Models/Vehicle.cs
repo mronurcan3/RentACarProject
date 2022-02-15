@@ -44,9 +44,13 @@ namespace Project.Entities.Models
 
         public BodyType Body { get; set; }
 
+      
+
         //Relational Properties
 
         public virtual UserRental UserRental { get; set; }
+
+        public virtual Image Image { get; set; }
 
 
     }

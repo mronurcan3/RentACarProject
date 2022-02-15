@@ -17,9 +17,132 @@
     <link href="../../Pictures/wallpapersden.com_daniel-craig-007-james-bond-aston-martin-car-photoshoot_7680x4320.ico" rel="icon">
 
     <!--Tailwind css-->
+    <script src="~/Scripts/jquery-3.4.1.intellisense.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.slim.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.slim.min.js"></script>
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+
+
+
+
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        /* Fixed sidenav, full height */
+        .sidenav {
+            height: 100%;
+            width: 350px;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #0f172a;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+            /* Style the sidenav links and the dropdown button */
+            .sidenav a, .dropdown-btn {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #818181;
+                display: block;
+                border: none;
+                background: none;
+                width: 100%;
+                text-align: left;
+                cursor: pointer;
+                outline: none;
+            }
+
+                /* On mouse-over */
+                .sidenav a:hover, .dropdown-btn:hover {
+                    color: #f1f1f1;
+                }
+
+        /* Main content */
+        .main {
+            margin-left: 200px; /* Same as the width of the sidenav */
+            font-size: 20px; /* Increased text to enable scrolling */
+            padding: 0px 10px;
+        }
+
+        /* Add an active class to the active dropdown button */
+        .active {
+            background-color: #1e3a8a;
+            color: white;
+        }
+
+        /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+        .dropdown-container {
+            display: none;
+            background-color: #262626;
+            padding-left: 8px;
+        }
+
+        /* Optional: Style the caret down icon */
+        .fa-caret-down {
+            float: right;
+            padding-right: 8px;
+        }
+
+        m
+        /* Some media queries for responsiveness */
+        @@media screen and (max-height: 450px) {
+            .sidenav
+
+        {
+            padding-top: 15px;
+        }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+
+        }
+
+        .myscroll-scrollbar-thumb {
+            background: red;
+            border-radius: 10px;
+        }
+    </style>
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: red;
+            border-radius: 10px;
+        }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #b30000;
+            }
+    </style>
     <script>
 
         tailwind.config = {
@@ -179,80 +302,7 @@
         }
     </style>
 
-    <style>
-        .main {
-            display: block;
-            position: relative;
-            padding-left: 45px;
-            margin-bottom: 15px;
-            cursor: pointer;
-            font-size: 20px;
-            color: #eab308;
-        }
 
-        /* Hide the default checkbox */
-        input[type=checkbox] {
-            visibility: hidden;
-        }
-
-        /* Creating a custom checkbox
-        based on demand */
-        .geekmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 25px;
-            width: 25px;
-            background-color: #84cc16; /*normal renk orta*/
-        }
-
-        /* Specify the background color to be
-        shown when hovering over checkbox */
-        .main:hover input ~ .geekmark {
-            background-color: #a3e635; /*hover rengi bir tik acik*/
-        }
-
-        /* Specify the background color to be
-        shown when checkbox is active */
-        .main input:active ~ .geekmark {
-            background-color: #bef264; /*gecis efekt rengi en acik*/
-        }
-
-        /* Specify the background color to be
-        shown when checkbox is checked */
-        .main input:checked ~ .geekmark {
-            background-color: #4d7c0f; /*isaretlenmis hali koyu*/
-        }
-
-        /* Checkmark to be shown in checkbox */
-        /* It is not be shown when not checked */
-        .geekmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-        }
-
-        /* Display checkmark when checked */
-        .main input:checked ~ .geekmark:after {
-            display: block;
-        }
-
-        /* Styling the checkmark using webkit */
-        /* Rotated the rectangle by 45 degree and
-        showing only two border to make it look
-        like a tickmark */
-        .main .geekmark:after {
-            left: 8px;
-            bottom: 5px;
-            width: 6px;
-            height: 12px;
-            border: solid white;
-            border-width: 0 4px 4px 0;
-            -webkit-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -423,85 +473,811 @@
         </div>
     </nav>
     <!--Navbar end-->
+    <!--Search Start-->
 
-    <div class="flex flex-raw-2">
 
-        <!--Filter Start-->
-        <div class="w-96">
-            <div class="grid grid-raw-2 divide-y divide-gray-700 mt-8">
-                <div class=" border-2 border-teal-500 outline-2">
-                    <p class=" w-96 bg-slate-900 text-yellow-500 text-center">Filter</p>
+
+
+
+
+
+
+
+    <div class="container bg-slate-900 max-w-full self-start ">
+        <div class="grid grid-cols-6 space-x-2 justify-start">
+
+
+
+
+
+
+
+            <div class="">
+                <select id="pickUpLocID" class=" mt-2 bg-lime-500" style="height: 50px; width:200px " name="PickUp">
+                    <option selected>PickUp Location</option>
+                    <option value="Izmir">Izmir</option>
+                    <option value="Istanbul">Istanbul</option>
+                    <option value="Ankara">Ankara</option>
+                </select>
+            </div>
+            <div class="">
+                <select name="DropOff" id="dropOffLocId" class="  mt-2 bg-lime-500" style="height: 50px;width:200px">
+                    <option selected>Drop Location</option>
+                    <option value="Izmir">Izmir</option>
+                    <option value="Istanbul">Istanbul</option>
+                    <option value="Ankara">Ankara</option>
+                </select>
+            </div>
+
+
+            <div class=" mt-3">
+                <div class=" mt-2" >
+                    <input id="pickUpDateId" type="date" class="bg-lime-500" name="date1" placeholder="Pickup Date" />
                 </div>
-                <div id="btnfilter1" class="">
-                    <div class="border-2 border-teal-500 outline-2 ">
-                        <div class="flex flex-raw-2 mydropbtn w-96    ">
-                            <button onclick="myFunction()" class="dropbtn">Gear Type</button>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2 dropbtn  " onclick="myFunction()" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                            <svg id="chevron-up" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2 dropbtn" onclick="myFunction()" style="display:none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-                            </svg>
+            </div>
+            <div class=" mt-3">
+                <div class=" mt-2" >
+                    <input id="dropOffDateId" type="date" class="bg-lime-500" name="date2" placeholder="Drop Off" />
+                </div>
+            </div>
 
-                        </div>
-
-
-
-                    </div>
+            <div class="">
+                <button id="mybtn1" class=" mt-2 bg-myblue-200 hover:bg-myorange text-mywhite font-bold  py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="height:50px;width:200px">
+                    Search
+                </button>
+            </div>
 
 
-                    <div id="myDropdown" class="dropdown-content    w-96 ">
-                        <div class="flex flex-raw-2 pt-2 border-2 border-teal-500 outline-2 ">
-
-                            <label class="main ml-4">
-                                Automatic
-                                <input type="checkbox">
-                                <span class="geekmark"></span>
-                            </label>
-
-                            <label class="main ml-8">
-                                Manual
-                                <input type="checkbox">
-                                <span class="geekmark"></span>
-                            </label>
-                        </div>
 
 
-                    </div>
-                    <!--dropdown menu start-->
+        </div>
+    </div>
+
+
+    <!--Search End-->
+    <!--Sidebar Filter Start-->
+    <div class="sidenav" style="float:left">
+
+        <div class="text-center">
+            <label class=" text-3xl uppercase" style="color: #818181">Filter</label>
+        </div>
+        <hr />
+
+        <button class="dropdown-btn flex flex-raw-2 justify-between uppercase">
+            Transmission Type
+            <i class="fa fa-caret-down"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2 dropbtn  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+        <div class="dropdown-container">
+            <div class="myscroll pt-2  flex flex-raw-2 overflow-y-auto h-12">
+
+
+
+                <div class="grid grid-raw-2 ">
+
+
+                    <label class="main ml-2  text-white">
+
+                        <input id="transmissionType" value="Automatic" type="checkbox">
+                        <span class="geekmark"></span>
+                        Automatic
+                    </label>
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="grid grid-raw-2">
+
+                    <label class="main ml-2  text-white">
+
+                        <input value="Manuel" id="transmissionType" type="checkbox">
+                        <span class="geekmark"></span>
+                        Manuel
+                    </label>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <hr />
+
+        <button class="dropdown-btn flex flex-raw2  justify-between uppercase">
+            Fuel Type
+            <i class="fa fa-caret-down"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2 dropbtn  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+        <div class="dropdown-container">
+            <div class="myscroll  flex flex-raw-2 overflow-y-auto h-32">
+
+
+
+                <div class="grid grid-raw-2 ">
+
+
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        Gas
+                    </label>
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        Diesel
+                    </label>
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="grid grid-raw-2">
+
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        Electric
+                    </label>
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        Hybrid
+                    </label>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <hr />
+        <button class="dropdown-btn flex flex-raw-2  justify-between uppercase">
+            Price Range
+            <i class="fa fa-caret-down"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2 dropbtn  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+        <div class="dropdown-container">
+            <div class="myscroll  flex flex-raw-2 overflow-y-auto h-40">
+
+
+
+                <div class="grid grid-raw-2 ">
+
+
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        0-500
+                    </label>
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        500-1000
+                    </label>
+
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        1000-2000
+                    </label>
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        2500 and above
+                    </label>
+
+
+
+
+
+
+
+
+
+
 
                 </div>
 
 
             </div>
         </div>
+        <hr />
+        <button class="dropdown-btn flex flex-raw-2  justify-between uppercase">
+            Car Brand
+            <i class="fa fa-caret-down"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2 dropbtn  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+        <div class="dropdown-container">
+            <div class="myscroll  flex flex-raw-2 overflow-y-auto h-40">
 
 
-        <!--Filter End-->
+
+                <div class="grid grid-raw-2 ">
+
+                    @{
+                        int b = -1;
+
+
+                    }
+
+
+
+
+
+                    @foreach (KeyValuePair<string, int> item in Model.VehiclesUnits)
+                    {
+                        int vehicleCount = Model.Vehicles.Count;
+
+
+
+                        b++;
+
+
+
+
+
+
+
+                        if (b == vehicleCount / 2)
+                        {
+                            break;
+
+
+                        }
+
+
+                        <label class="main ml-2  text-white">
+
+                            <input type="checkbox">
+                            <span class="geekmark"></span>
+                            @item.Key (@item.Value)
+                        </label>
+
+
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="grid grid-raw-2">
+
+                    @{
+                        int c = -1;
+                    }
+
+                    @foreach (KeyValuePair<string, int> item in Model.VehiclesUnits)
+                    {
+                        int vehicleCount = Model.Vehicles.Count;
+
+
+
+                        c++;
+
+
+
+                        if (c >= vehicleCount / 2)
+                        {
+                            <label class="main ml-2  text-white">
+
+                                <input type="checkbox">
+                                <span class="geekmark"></span>
+                                @item.Key (@item.Value)
+                            </label>
+
+
+                        }
+
+
+
+
+
+                    }
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <hr />
+        <button class="dropdown-btn flex flex-raw-2  justify-between uppercase">
+            Car Model
+            <i class="fa fa-caret-down"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2 dropbtn  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+        <div class="dropdown-container">
+            <div class="myscroll  flex flex-raw-2 overflow-y-auto h-40">
+
+
+
+                <div class="grid grid-raw-2 ">
+
+                    @{
+                        int d = -1;
+
+
+                    }
+
+
+
+
+
+                    @foreach (KeyValuePair<string, int> item in Model.VehiclesUnits2)
+                    {
+                        int vehicleCount = Model.Vehicles.Count;
+
+
+
+                        d++;
+
+
+
+
+
+
+
+                        if (b == vehicleCount / 2)
+                        {
+                            break;
+
+
+                        }
+
+
+                        <label class="main ml-2  text-white">
+
+                            <input type="checkbox">
+                            <span class="geekmark"></span>
+                            @item.Key (@item.Value)
+                        </label>
+
+
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="grid grid-raw-2">
+
+                    @{
+                        int e = -1;
+                    }
+
+                    @foreach (KeyValuePair<string, int> item in Model.VehiclesUnits)
+                    {
+                        int vehicleCount = Model.Vehicles.Count;
+
+
+
+                        c++;
+
+
+
+                        if (e >= vehicleCount / 2)
+                        {
+                            <label class="main ml-2  text-white">
+
+                                <input type="checkbox">
+                                <span class="geekmark"></span>
+                                @item.Key (@item.Value)
+                            </label>
+
+
+                        }
+
+
+
+
+
+                    }
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <hr />
+        <button class="dropdown-btn flex flex-raw-2  justify-between uppercase">
+            Car Type
+            <i class="fa fa-caret-down"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2 dropbtn  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+        <div class="dropdown-container">
+            <div class="myscroll  flex flex-raw-2 overflow-y-auto h-40">
+
+
+
+                <div class="grid grid-raw-2 ">
+
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        Sedan (
+                        @foreach (KeyValuePair<string, int> item in Model.BodyTypes)
+                        {
+                            if (item.Key == "Sedan")
+                            {
+
+                                @item.Value
+                            }
+
+
+
+
+                        }
+                        )
+
+
+
+                    </label>
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        Hatchback(
+                        @foreach (KeyValuePair<string, int> item in Model.BodyTypes)
+                        {
+                            if (item.Key == "Hatchback")
+                            {
+                                @item.Value
+
+                            }
+
+
+                        }
+                        )
+                    </label>
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        SUV(
+                        @foreach (KeyValuePair<string, int> item in Model.BodyTypes)
+                        {
+                            if (item.Key == "SUV")
+                            {
+                                @item.Value
+
+                            }
+                        }
+                        )
+                    </label>
+
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        Cabrio(
+                        @foreach (KeyValuePair<string, int> item in Model.BodyTypes)
+                        {
+                            if (item.Key == "Cabrio")
+                            {
+
+                                @item.Value
+                            }
+                        }
+                        )
+                    </label>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="grid grid-raw-2">
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        Coupe(
+                        @foreach (KeyValuePair<string, int> item in Model.BodyTypes)
+                        {
+                            if (item.Key == "Coupe")
+                            {
+                                @item.Value
+
+                            }
+                        }
+                        )
+                    </label>
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        Limousine(
+                        @foreach (KeyValuePair<string, int> item in Model.BodyTypes)
+                        {
+                            if (item.Key == "Limousine")
+                            {
+                                @item.Value
+
+                            }
+                        }
+                        )
+                    </label>
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        Minivan(
+                        @foreach (KeyValuePair<string, int> item in Model.BodyTypes)
+                        {
+                            if (item.Key == "Minivan")
+                            {
+
+                                @item.Value
+                            }
+                        }
+                        )
+                    </label>
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <hr />
+        <button class="dropdown-btn flex flex-raw-2  justify-between uppercase">
+            Deposit Fee
+            <i class="fa fa-caret-down"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2 dropbtn  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+        </button>
+        <div class="dropdown-container">
+            <div class="myscroll  flex flex-raw-2 overflow-y-auto h-40">
+
+
+
+                <div class="grid grid-raw-2 ">
+
+
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        1000-2000
+                    </label>
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        2000-3000
+                    </label>
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="grid grid-raw-2">
+
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        3000-4000
+                    </label>
+                    <label class="main ml-2  text-white">
+
+                        <input type="checkbox">
+                        <span class="geekmark"></span>
+                        >> 5000
+                    </label>
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--Sidebar Filter End-->
+    <!--ManinRental Start-->
+    <div id="allCars">
+
+
+
+        
+
 
 
     </div>
+    <!--ManinRental End-->
+
+
+
     <script>
-        /* When the user clicks on the button,
-        toggle between hiding and showing the dropdown content */
-        function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
+        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
 
-            var a = document.getElementById("myDropdown");
-
-            if (document.getElementById("myDropdown").style.display == style.display.block) {
-
-                document.getElementById("chevron-up").style.display.block;
-
-            };
-
-           
-
-           
-        };
-
-        
-        
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
     </script>
+
+    <script>
+
+
+
+        $(function(){
+
+
+
+            $("#transmissionType").checked(function () {
+
+
+
+
+
+                $.ajax({
+
+                    url: "https://localhost:44330/Home/Home/GetFilterCars/",
+                    type: "Get",
+                    data: { trans: $("#transmissionType").val() },
+                    success: function (comesPage) {
+                        $("#allCars").html(comesPage);
+
+                    },
+
+
+
+
+
+                })
+
+
+            })
+
+
+        })
+
+        $(function () {
+
+
+           
+
+
+
+
+            $("#mybtn1").click(function () {
+
+                
+                
+
+                $.ajax({
+
+                    url: "https://localhost:44330/Home/Home/GetFilterCars/",
+                    type: "Get",
+                    data: { pickUpLoc: $("#pickUpLocID").val(), dropOffLoc: $("#dropOffLocId").val(), pickUpDate: $("#pickUpDateId").val(), dropOffDate: $("#dropOffDateId").val() },
+                    success: function (comesPage) {
+                        $("#allCars").html(comesPage);
+
+                    },
+                    
+                    
+
+
+
+                })
+
+                
+
+
+
+
+
+
+            })
+
+
+
+
+
+
+
+        })
+    </script>
+
+
 </body>
 </html>
