@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Home\Controllers\HomeController.cs" />
     <Compile Include="Areas\Home\HomeAreaRegistration.cs" />
+    <Compile Include="Areas\Home\ModelVM\UserVM.cs" />
     <Compile Include="Areas\Home\ModelVM\VehicleVM.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -321,9 +322,12 @@
     <Content Include="Outer\car-rental-html-template\scss\bootstrap\scss\_utilities.scss" />
     <Content Include="Outer\car-rental-html-template\scss\bootstrap\scss\_variables.scss" />
     <Content Include="Areas\Home\Views\Home\Rental.cshtml" />
-    <Content Include="Areas\Home\Views\Home\Test.cshtml" />
-    <Content Include="Areas\Home\Views\Home\Index2.cshtml" />
     <Content Include="Areas\Home\Views\Home\_RentalCars.cshtml" />
+    <Content Include="Areas\Home\Views\Home\Payment.cshtml" />
+    <Content Include="Areas\Home\Views\Home\_Rent.cshtml" />
+    <Content Include="Areas\Home\Views\Home\Index2.cshtml" />
+    <Content Include="Areas\Home\Views\Home\SignUp.cshtml" />
+    <Content Include="Areas\Home\Views\Home\_EmailConfirm.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -375,6 +379,10 @@
     <ProjectReference Include="..\Project.BLL\Project.BLL.csproj">
       <Project>{918df0e9-4f7a-4dc4-b20c-0edfd186fd05}</Project>
       <Name>Project.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Common\Project.Common.csproj">
+      <Project>{9EE38913-6F8A-419D-AE06-030085561FDB}</Project>
+      <Name>Project.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Project.Entities\Project.Entities.csproj">
       <Project>{2d25ca4e-ccd9-4d44-ac0d-aaf4a7db2713}</Project>

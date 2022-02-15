@@ -560,9 +560,9 @@
 
                     <label class="main ml-2  text-white">
 
-                        <input id="transmissionType" value="Automatic" type="checkbox">
+                        <input  class="transmission chec" value="Automatic" type="button">
                         <span class="geekmark"></span>
-                        Automatic
+                        
                     </label>
 
 
@@ -581,9 +581,9 @@
 
                     <label class="main ml-2  text-white">
 
-                        <input value="Manuel" id="transmissionType" type="checkbox">
+                        <input  value="Manuel" class="transmission chec" type="button">
                         <span class="geekmark"></span>
-                        Manuel
+                        
                     </label>
 
 
@@ -612,15 +612,15 @@
 
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="fuel" value="Gas" type="button">
                         <span class="geekmark"></span>
-                        Gas
+                       
                     </label>
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="fuel" value="Diesel" type="button">
                         <span class="geekmark"></span>
-                        Diesel
+                        
                     </label>
 
 
@@ -639,15 +639,15 @@
 
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="fuel" value="Electric" type="button">
                         <span class="geekmark"></span>
-                        Electric
+                       
                     </label>
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="fuel" value="Hybrid" type="button">
                         <span class="geekmark"></span>
-                        Hybrid
+                        
                     </label>
 
 
@@ -675,28 +675,28 @@
 
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="priceRange" value="0-500" type="button">
                         <span class="geekmark"></span>
-                        0-500
+                       
                     </label>
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="priceRange" value="500-1000"  type="button">
                         <span class="geekmark"></span>
-                        500-1000
+                       
                     </label>
 
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="priceRange" value="1000-2000"  type="button">
                         <span class="geekmark"></span>
-                        1000-2000
+                        
                     </label>
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="priceRange" id="kkkk" value="2500"  type="button">
                         <span class="geekmark"></span>
-                        2500 and above
+                        
                     </label>
 
 
@@ -763,9 +763,9 @@
 
                         <label class="main ml-2  text-white">
 
-                            <input class="brand" value="@item.Key" type="checkbox">
+                            <input class="brand" value="@item.Key" type="button">
                             <span class="geekmark"></span>
-                            @item.Key (@item.Value)
+                             (@item.Value)
                         </label>
 
 
@@ -839,9 +839,9 @@
 
                         <label class="main ml-2  text-white">
 
-                            <input type="checkbox">
+                            <input class="model" value="@item.Key" type="button">
                             <span class="geekmark"></span>
-                            @item.Key (@item.Value)
+                            (@item.Value)
                         </label>
 
 
@@ -862,44 +862,7 @@
 
 
                 </div>
-                <div class="grid grid-raw-2">
-
-                    @{
-                        int e = -1;
-                    }
-
-                    @foreach (KeyValuePair<string, int> item in Model.VehiclesUnits)
-                    {
-                        int vehicleCount = Model.Vehicles.Count;
-
-
-
-                        e++;
-
-
-
-                        if (e >= vehicleCount / 2)
-                        {
-                            <label class="main ml-2  text-white">
-
-                                <input type="checkbox">
-                                <span class="geekmark"></span>
-                                @item.Key (@item.Value)
-                            </label>
-
-
-                        }
-
-
-
-
-
-                    }
-
-
-
-
-                </div>
+               
 
             </div>
         </div>
@@ -920,9 +883,9 @@
 
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="type" value="Sedan" type="button">
                         <span class="geekmark"></span>
-                        Sedan (
+                        (
                         @foreach (KeyValuePair<string, int> item in Model.BodyTypes)
                         {
                             if (item.Key == "Sedan")
@@ -942,9 +905,9 @@
                     </label>
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="type" value="Hatchback" type="button">
                         <span class="geekmark"></span>
-                        Hatchback(
+                        (
                         @foreach (KeyValuePair<string, int> item in Model.BodyTypes)
                         {
                             if (item.Key == "Hatchback")
@@ -959,9 +922,9 @@
                     </label>
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="type" value="SUV" type="button">
                         <span class="geekmark"></span>
-                        SUV(
+                        (
                         @foreach (KeyValuePair<string, int> item in Model.BodyTypes)
                         {
                             if (item.Key == "SUV")
@@ -975,9 +938,9 @@
 
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="type" value="Cabrio" type="button">
                         <span class="geekmark"></span>
-                        Cabrio(
+                        (
                         @foreach (KeyValuePair<string, int> item in Model.BodyTypes)
                         {
                             if (item.Key == "Cabrio")
@@ -1007,9 +970,9 @@
                 <div class="grid grid-raw-2">
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="type" value="Coupe" type="button">
                         <span class="geekmark"></span>
-                        Coupe(
+                       (
                         @foreach (KeyValuePair<string, int> item in Model.BodyTypes)
                         {
                             if (item.Key == "Coupe")
@@ -1022,9 +985,9 @@
                     </label>
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="type" value="Limousine" type="button">
                         <span class="geekmark"></span>
-                        Limousine(
+                        (
                         @foreach (KeyValuePair<string, int> item in Model.BodyTypes)
                         {
                             if (item.Key == "Limousine")
@@ -1037,9 +1000,9 @@
                     </label>
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="type" value="Minivan" type="button">
                         <span class="geekmark"></span>
-                        Minivan(
+                        (
                         @foreach (KeyValuePair<string, int> item in Model.BodyTypes)
                         {
                             if (item.Key == "Minivan")
@@ -1077,15 +1040,15 @@
 
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="deposit" value="1000-2000" type="button">
                         <span class="geekmark"></span>
-                        1000-2000
+                        
                     </label>
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="deposit" value="2000-3000"  type="button">
                         <span class="geekmark"></span>
-                        2000-3000
+                        
                     </label>
 
 
@@ -1104,15 +1067,15 @@
 
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="deposit" value="3000-4000"  type="button">
                         <span class="geekmark"></span>
-                        3000-4000
+                        
                     </label>
                     <label class="main ml-2  text-white">
 
-                        <input type="checkbox">
+                        <input class="deposit" value="5000"  type="button">
                         <span class="geekmark"></span>
-                        >> 5000
+                        
                     </label>
 
 
@@ -1160,13 +1123,196 @@
 
     <script>
 
-
+        
 
         
         
 
         $(function () {
 
+
+            
+
+            $(".type").click(function (element) {
+
+
+
+
+                $.ajax({
+
+                    url: "https://localhost:44330/Home/Home/GetFilterCars/",
+                    type: "Get",
+                    data: { filter: element.target.value,typ :"type" },
+                    success: function (comesPage) {
+                        $("#allCars").html(comesPage);
+
+                    },
+
+
+
+
+
+                })
+
+
+
+
+
+
+
+
+            })
+
+            $(".deposit").click(function (element) {
+
+
+
+
+                $.ajax({
+
+                    url: "https://localhost:44330/Home/Home/GetFilterCars/",
+                    type: "Get",
+                    data: { filter: element.target.value, typ: "deposit" },
+                    success: function (comesPage) {
+                        $("#allCars").html(comesPage);
+
+                    },
+
+
+
+
+
+                })
+
+
+
+
+
+
+
+
+            })
+
+            $(".model").click(function (element) {
+
+
+
+
+                $.ajax({
+
+                    url: "https://localhost:44330/Home/Home/GetFilterCars/",
+                    type: "Get",
+                    data: { filter: element.target.value, typ: "model" },
+                    success: function (comesPage) {
+                        $("#allCars").html(comesPage);
+
+                    },
+
+
+
+
+
+                })
+
+
+
+
+
+
+
+
+            })
+
+
+            $(".priceRange").click(function (element) {
+
+
+
+
+                $.ajax({
+
+                    url: "https://localhost:44330/Home/Home/GetFilterCars/",
+                    type: "Get",
+                    data: { filter: element.target.value, typ: "priceRange" },
+                    success: function (comesPage) {
+                        $("#allCars").html(comesPage);
+
+                    },
+
+
+
+
+
+                })
+
+
+
+
+
+
+
+
+            })
+
+            $(".fuel").click(function (element) {
+
+
+
+
+                $.ajax({
+
+                    url: "https://localhost:44330/Home/Home/GetFilterCars/",
+                    type: "Get",
+                    data: { filter: element.target.value, typ: "fuel" },
+                    success: function (comesPage) {
+                        $("#allCars").html(comesPage);
+
+                    },
+
+
+
+
+
+                })
+
+
+
+
+
+
+
+
+            })
+
+            $(".transmission").click(function (element) {
+
+
+
+
+                $.ajax({
+
+                    url: "https://localhost:44330/Home/Home/GetFilterCars/",
+                    type: "Get",
+                    data: { filter: element.target.value, typ: "transmission" },
+                    success: function (comesPage) {
+                        $("#allCars").html(comesPage);
+
+                    },
+
+
+
+
+
+                })
+
+
+
+
+
+
+
+
+            })
 
             $(".brand").click(function (element) {
 
@@ -1177,7 +1323,7 @@
 
                     url: "https://localhost:44330/Home/Home/GetFilterCars/",
                     type: "Get",
-                    data: { filter: element.target.value },
+                    data: { filter: element.target.value, typ: "brand" },
                     success: function (comesPage) {
                         $("#allCars").html(comesPage);
 
