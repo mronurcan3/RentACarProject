@@ -1,4 +1,5 @@
-﻿using Project.Entities.Models;
+﻿using Project.DAL.StrategyPattern;
+using Project.Entities.Models;
 using Project.Map.Options;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Project.DAL.Context
 
         public MyContext():base("MyConnection")
         {
-
+            Database.SetInitializer(new MyInit());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -25,6 +26,7 @@ namespace Project.DAL.Context
             modelBuilder.Configurations.Add(new RentalMap());
             modelBuilder.Configurations.Add(new UserRentalMap());
             modelBuilder.Entity<UserProfile>().Property(x => x.Balance).HasPrecision(18, 2);
+            modelBuilder.Configurations.Add(new ImageMap());
         }
 
 
@@ -33,5 +35,6 @@ namespace Project.DAL.Context
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<UserRental> UserRentals { get; set; }
+        public DbSet<Image> Images { get; set; }
     }
 }

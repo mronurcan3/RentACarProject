@@ -19,5 +19,6 @@ namespace Project.Entities.Models
         //Relational Properties
 
         public virtual List<AppUser> AppUsers { get; set; }
+        
     }
 }

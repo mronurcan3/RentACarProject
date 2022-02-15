@@ -1,0 +1,36 @@
+﻿@model VehicleVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index2</title>
+</head>
+<body>
+    <div>
+
+        @using (Html.BeginForm("Index2", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+    <div>
+        Isim Giriniz
+    </div>
+
+                    <div>
+                        @Html.TextBoxFor(x => x.Image.Name)
+                    </div>
+
+                                    <div>
+                                        <input type="file" name="resim" value="" />
+                                    </div>
+
+                                                    <div>
+                                                        <button class="btn btn-primary">Kaydet</button>
+                                                    </div>}
+    </div>
+</body>
+</html>
