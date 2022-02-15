@@ -88,7 +88,7 @@ namespace Project.BLL.DesignPatterns.GenericRepository.BaseRep
 
         public T FirstOrDefault(Expression<Func<T, bool>> exp)
         {
-            return _db.Set<T>().FirstOrDefault();
+            return _db.Set<T>().FirstOrDefault(exp);
         }
 
         public List<T> GetActives()

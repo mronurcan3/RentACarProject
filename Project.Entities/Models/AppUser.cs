@@ -10,11 +10,19 @@ namespace Project.Entities.Models
     public class AppUser:BaseEntity
     {
         //asdqas
+
+        public AppUser()
+        {
+           
+            ActivationCode = Guid.NewGuid();
+        }
         public string UserName { get; set; }
 
         public string Password { get; set; }
 
         public UserRole Role { get; set; }
+
+        public Guid ActivationCode { get; set; }
 
 
         //Relational Properties

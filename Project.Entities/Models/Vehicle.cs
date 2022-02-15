@@ -36,6 +36,8 @@ namespace Project.Entities.Models
 
         public int MinAge { get; set; }
 
+
+
         public int MinLisenceYear { get; set; }
 
         public FuelType Fuel { get; set; }

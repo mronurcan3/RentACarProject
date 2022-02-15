@@ -21,5 +21,10 @@ namespace Project.MVCUI.Areas.Home.ModelVM
         public List<Image> Images { get; set; }
 
         public Image Image { get; set; }
+
+        public int Date { get; set; }
+
+        public List<DateTime> Dates { get; set; }
     }
+
 }
