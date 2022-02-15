@@ -763,7 +763,7 @@
 
                         <label class="main ml-2  text-white">
 
-                            <input type="checkbox">
+                            <input class="brand" value="@item.Key" type="checkbox">
                             <span class="geekmark"></span>
                             @item.Key (@item.Value)
                         </label>
@@ -786,44 +786,7 @@
 
 
                 </div>
-                <div class="grid grid-raw-2">
-
-                    @{
-                        int c = -1;
-                    }
-
-                    @foreach (KeyValuePair<string, int> item in Model.VehiclesUnits)
-                    {
-                        int vehicleCount = Model.Vehicles.Count;
-
-
-
-                        c++;
-
-
-
-                        if (c >= vehicleCount / 2)
-                        {
-                            <label class="main ml-2  text-white">
-
-                                <input type="checkbox">
-                                <span class="geekmark"></span>
-                                @item.Key (@item.Value)
-                            </label>
-
-
-                        }
-
-
-
-
-
-                    }
-
-
-
-
-                </div>
+               
 
             </div>
         </div>
@@ -866,7 +829,7 @@
 
 
 
-                        if (b == vehicleCount / 2)
+                        if (d == vehicleCount / 2)
                         {
                             break;
 
@@ -911,7 +874,7 @@
 
 
 
-                        c++;
+                        e++;
 
 
 
@@ -1199,21 +1162,22 @@
 
 
 
-        $(function(){
+        
+        
+
+        $(function () {
+
+
+            $(".brand").click(function (element) {
 
 
 
-            $("#transmissionType").checked(function () {
-
-
-
-
-
+               
                 $.ajax({
 
                     url: "https://localhost:44330/Home/Home/GetFilterCars/",
                     type: "Get",
-                    data: { trans: $("#transmissionType").val() },
+                    data: { filter: element.target.value },
                     success: function (comesPage) {
                         $("#allCars").html(comesPage);
 
@@ -1226,15 +1190,13 @@
                 })
 
 
+
+
+
+
+
+
             })
-
-
-        })
-
-        $(function () {
-
-
-           
 
 
 
@@ -1246,7 +1208,7 @@
 
                 $.ajax({
 
-                    url: "https://localhost:44330/Home/Home/GetFilterCars/",
+                    url: "https://localhost:44330/Home/Home/GetSearchCars/",
                     type: "Get",
                     data: { pickUpLoc: $("#pickUpLocID").val(), dropOffLoc: $("#dropOffLocId").val(), pickUpDate: $("#pickUpDateId").val(), dropOffDate: $("#dropOffDateId").val() },
                     success: function (comesPage) {

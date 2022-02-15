@@ -165,7 +165,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
             return RedirectToAction("Index2");
         }
 
-        public PartialViewResult GetFilterCars(string pickUpLoc,string dropOffLoc,DateTime pickUpDate, DateTime dropOffDate,string trans)
+        public PartialViewResult GetSearchCars(string pickUpLoc,string dropOffLoc,DateTime pickUpDate, DateTime dropOffDate)
         {
             
 
@@ -181,9 +181,25 @@ namespace Project.MVCUI.Areas.Home.Controllers
             return PartialView("_RentalCars", VVM);
         }
 
-        
+        public PartialViewResult GetFilterCars(string filter)
+        {
 
-        
+
+
+
+            VehicleVM VVM = new VehicleVM()
+            {
+                Vehicles = _vehicle.GetActives(),
+
+
+            };
+
+            return PartialView("_RentalCars", VVM);
+        }
+
+
+
+
 
 
     }
