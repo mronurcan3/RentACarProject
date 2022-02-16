@@ -54,7 +54,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
                 VehicleVM UVM = new VehicleVM()
                 {
-                    User = appUser,
+                    Users = appUser,
                 };
 
                 return View(UVM);
@@ -62,7 +62,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
             VehicleVM vvm = new VehicleVM()
             {
-                User = _appUser.GetActives(),
+                Users = _appUser.GetActives(),
             };
 
             return View(vvm);
@@ -158,6 +158,24 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
             }
 
+            List<AppUser> appUser = new List<AppUser>();
+
+            if (Session["user"] != null)
+            {
+                int id = Convert.ToInt32(Session["user"]);
+
+               
+
+                appUser.Add(_appUser.FirstOrDefault(x => x.ID == id));
+
+
+
+            }
+
+            else
+            {
+                appUser.AddRange(_appUser.GetAll());
+            }
 
 
             VehicleVM VVM = new VehicleVM()
@@ -166,6 +184,8 @@ namespace Project.MVCUI.Areas.Home.Controllers
                 VehiclesUnits = myVehiclesUnits,
                 VehiclesUnits2 = myVehiclesUnits2,
                 BodyTypes = bodyTypes,
+                Users = appUser,
+
             };
             return View(VVM);
         }
@@ -200,7 +220,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
             return RedirectToAction("Index2");
         }
 
-        public PartialViewResult GetSearchCars(string pickUpLoc,string dropOffLoc,DateTime pickUpDate, DateTime dropOffDate)
+        public PartialViewResult GetSearchCars(DateTime pickUpDate, DateTime dropOffDate)
         {
             
 
@@ -208,7 +228,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
             VehicleVM VVM = new VehicleVM()
             {
-                Vehicles = _vehicle.GetActives(),
+                Vehicles = _vehicle.Where(x => x.VehicleStatus == Entities.Enums.VehicleStatus.Available),
 
                 
             };
@@ -511,9 +531,29 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
         public ActionResult Payment(int id)
         {
+            List<AppUser> appUser = new List<AppUser>();
+
+            if (Session["user"] != null)
+            {
+                int myid = Convert.ToInt32(Session["user"]);
+
+
+
+                appUser.Add(_appUser.FirstOrDefault(x => x.ID == myid));
+
+
+
+            }
+
+            else
+            {
+                appUser.AddRange(_appUser.GetAll());
+            }
+
             VehicleVM VVM = new VehicleVM()
             {
                 Vehicles = _vehicle.Where(x => x.ID == id),
+                Users = appUser,
             };
 
 
@@ -667,7 +707,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
                 VehicleVM VVM = new VehicleVM()
                 {
-                    User = appUser,
+                    Users = appUser,
                 };
 
                 return View(VVM);
@@ -752,7 +792,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
             VehicleVM VVM = new VehicleVM()
             {
-                User = myAppUser,
+                Users = myAppUser,
             };
 
 
@@ -776,8 +816,9 @@ namespace Project.MVCUI.Areas.Home.Controllers
             
             string[] inf = finalPayment.Split(',');
 
+            int userID = Convert.ToInt32(inf[2]);
 
-            AppUser user = _appUser.FirstOrDefault(x => x.ID == Convert.ToInt32(inf[2]));
+            AppUser user = _appUser.FirstOrDefault(x => x.ID == userID);
 
             if (user.UserProfile.Balance >= Convert.ToDecimal(inf[4]))
             {
@@ -810,7 +851,12 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
                 _userRental.Add(userRental);
 
-                Vehicle vehicle = _vehicle.FirstOrDefault(x => x.ID == Convert.ToInt32(inf[3]));
+                int vehicleID = Convert.ToInt32(inf[3]);
+
+                Vehicle vehicle = _vehicle.FirstOrDefault(x => x.ID == vehicleID);
+
+                vehicle.UserRentalID = userID;
+                vehicle.UserRentalName = _appUser.FirstOrDefault(x => x.ID == userID).UserName;
 
                 vehicle.VehicleStatus = Entities.Enums.VehicleStatus.OnRent;
 

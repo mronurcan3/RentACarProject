@@ -1,0 +1,219 @@
+﻿@model VehicleVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListVehicle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div>
+
+        <div>
+            @{ 
+
+                <label>@Model.Users[0].UserName</label>
+
+
+
+            }
+
+
+        </div>
+
+        @TempData["result"]
+
+        @TempData["result2"]
+
+        @{
+
+            int a = Model.Vehicles.Count;
+            int x = 0;
+            int y = 4;
+
+
+        }
+
+        @foreach (Vehicle item in Model.Vehicles)
+        {
+            x++;
+
+
+            <div class="grid grid-row-@a justify-center @{ if (a >= 2)
+                    {
+                        y = 4;
+                    }
+                    else { y = 8; }
+
+
+
+                } mt-@y ">
+
+
+
+
+                <div class=" bg-slate-900  flex flex-raw-2 hover:bg-mygreen" style="width:940px;height:500px">
+
+                    <div>
+                        <div class="">
+                            <div class="">
+
+                                <img class="h-56 w-72" src="@item.Image.ImagePath" />
+
+
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="text-xl mt-8 ml-4  text-cyan-300 uppercase">
+                            <a class="ml-4">@item.Brand @item.Model</a>
+                            <div class=" mt-4 flex flex-row-3">
+                                <div class="flex flex-row-2">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#14b8a6" class="h-5 w-5 mt-0.5" viewBox="0 0 24 24"><path d="M23.5 7c.276 0 .5.224.5.5v.511c0 .793-.926.989-1.616.989l-1.086-2h2.202zm-1.441 3.506c.639 1.186.946 2.252.946 3.666 0 1.37-.397 2.533-1.005 3.981v1.847c0 .552-.448 1-1 1h-1.5c-.552 0-1-.448-1-1v-1h-13v1c0 .552-.448 1-1 1h-1.5c-.552 0-1-.448-1-1v-1.847c-.608-1.448-1.005-2.611-1.005-3.981 0-1.414.307-2.48.946-3.666.829-1.537 1.851-3.453 2.93-5.252.828-1.382 1.262-1.707 2.278-1.889 1.532-.275 2.918-.365 4.851-.365s3.319.09 4.851.365c1.016.182 1.45.507 2.278 1.889 1.079 1.799 2.101 3.715 2.93 5.252zm-16.059 2.994c0-.828-.672-1.5-1.5-1.5s-1.5.672-1.5 1.5.672 1.5 1.5 1.5 1.5-.672 1.5-1.5zm10 1c0-.276-.224-.5-.5-.5h-7c-.276 0-.5.224-.5.5s.224.5.5.5h7c.276 0 .5-.224.5-.5zm2.941-5.527s-.74-1.826-1.631-3.142c-.202-.298-.515-.502-.869-.566-1.511-.272-2.835-.359-4.441-.359s-2.93.087-4.441.359c-.354.063-.667.267-.869.566-.891 1.315-1.631 3.142-1.631 3.142 1.64.313 4.309.497 6.941.497s5.301-.184 6.941-.497zm2.059 4.527c0-.828-.672-1.5-1.5-1.5s-1.5.672-1.5 1.5.672 1.5 1.5 1.5 1.5-.672 1.5-1.5zm-18.298-6.5h-2.202c-.276 0-.5.224-.5.5v.511c0 .793.926.989 1.616.989l1.086-2z" /></svg>
+                                    </div>
+
+
+
+                                    <div class="pl-2">
+                                        <p>@item.Year</p>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="flex flex-row-2 ml-2">
+                                    |
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#14b8a6" class="h-5 w-5 ml-2 mt-0.5" viewBox="0 0 24 24"><path d="M24 13.616v-3.232c-1.651-.587-2.694-.752-3.219-2.019v-.001c-.527-1.271.1-2.134.847-3.707l-2.285-2.285c-1.561.742-2.433 1.375-3.707.847h-.001c-1.269-.526-1.435-1.576-2.019-3.219h-3.232c-.582 1.635-.749 2.692-2.019 3.219h-.001c-1.271.528-2.132-.098-3.707-.847l-2.285 2.285c.745 1.568 1.375 2.434.847 3.707-.527 1.271-1.584 1.438-3.219 2.02v3.232c1.632.58 2.692.749 3.219 2.019.53 1.282-.114 2.166-.847 3.707l2.285 2.286c1.562-.743 2.434-1.375 3.707-.847h.001c1.27.526 1.436 1.579 2.019 3.219h3.232c.582-1.636.75-2.69 2.027-3.222h.001c1.262-.524 2.12.101 3.698.851l2.285-2.286c-.744-1.563-1.375-2.433-.848-3.706.527-1.271 1.588-1.44 3.221-2.021zm-12 2.384c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4z" /></svg>
+                                    <div class="ml-2"><p>@item.Gear</p></div>
+
+
+                                </div>
+
+                                <div class="flex flex-row-2 ml-2">
+
+
+                                    |
+                                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="#14b8a6" class="h-5 w-5 mt-0.5 ml-2" fill-rule="evenodd" clip-rule="evenodd"><path d="M5.829 6c-.412 1.165-1.524 2-2.829 2-1.656 0-3-1.344-3-3s1.344-3 3-3c1.305 0 2.417.835 2.829 2h13.671c2.484 0 4.5 2.016 4.5 4.5s-2.016 4.5-4.5 4.5h-4.671c-.412 1.165-1.524 2-2.829 2-1.305 0-2.417-.835-2.829-2h-4.671c-1.38 0-2.5 1.12-2.5 2.5s1.12 2.5 2.5 2.5h13.671c.412-1.165 1.524-2 2.829-2 1.656 0 3 1.344 3 3s-1.344 3-3 3c-1.305 0-2.417-.835-2.829-2h-13.671c-2.484 0-4.5-2.016-4.5-4.5s2.016-4.5 4.5-4.5h4.671c.412-1.165 1.524-2 2.829-2 1.305 0 2.417.835 2.829 2h4.671c1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5h-13.671zm6.171 5c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1z" /></svg>
+                                    <div class="ml-2">@item.KM</div>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="text-cyan-300 text-2xl mt-8 ml-28 ">
+                        <div class="flex flex-raw-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+
+                            <label class="ml-4">Seat Count: @item.SeatCount</label>
+
+
+                        </div>
+
+                        <div class="flex flex-raw-2 mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+
+                            <label class="ml-4">KM:@item.KM</label>
+                        </div>
+
+                        <div class="flex flex-raw-2 mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+
+
+
+                            <label class="ml-4">Rental Status: @item.VehicleStatus</label>
+                        </div>
+
+                        <div class="flex flex-raw-2 mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+
+                            <label class="ml-4">User: @item.UserRentalName</label>
+                        </div>
+
+                        @using (Html.BeginForm("UpdateVehicle", "Admin", FormMethod.Post))
+                        {
+                            <div class="flex flex-raw-3 mt-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <label class="ml-2">Price</label>
+
+                                <input name="Price" type="text" value="@item.Price " class="rounded-md border-2 border-rose-500 ml-4 bg-slate-900">
+
+
+                            </div>
+
+                        <div class="flex flex-raw-3 mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <label class="ml-2">Min Age</label>
+
+                            <input name="MinAge" type="text" value="@item.MinAge " class="ml-4 bg-slate-900 rounded-md border-2 border-rose-500">
+                        </div>
+
+                        <div class="flex flex-raw-3 mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <label class="ml-2">MinLisence</label>
+
+                            <input name="MinLisenceYear" type="text" value="@item.MinLisenceYear " class="ml-4 bg-slate-900 rounded-md border-2 border-rose-500">
+                        </div>
+
+
+                        <button name="id" value="@item.ID" class="w-72 mt-4 text-teal-300  bg-teal-700 hover:bg-emerald-400 font-bold hover:text-cyan-900 py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="height:50px;">
+                            Update
+                        </button>
+                        }
+
+
+                        <button class="w-72 mt-4 text-teal-300  bg-teal-700 hover:bg-emerald-400 font-bold hover:text-cyan-900 py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="height:50px;">
+                            @Html.ActionLink("Delete", "DeleteVehicle", new { id = item.ID }, new { @class = "btn btn-danger" })
+                        </button>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+            </div>
+
+
+
+
+        }
+
+    </div>
+</body>
+</html>

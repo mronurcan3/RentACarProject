@@ -10,6 +10,10 @@ namespace Project.Entities.Models
     public class Vehicle:BaseEntity
     {
 
+        public int? UserRentalID { get; set; }
+
+        public string UserRentalName { get; set; }
+
         public string PlateNumber { get; set; }
 
         public VehicleStatus VehicleStatus { get; set; }

@@ -9,9 +9,187 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-    <div> 
+    <div>
+        @using (Html.BeginForm("AddVehicle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="flex flex-raws-2">
+
+                <div class="grid grid-raws-13 w-34 ml-8 rounded-md border-4 border-sky-500">
+
+                    <label class=" border-2 border-sky-500">PlateNumber</label>
+
+                    <label class=" border-2 border-sky-500">Brand</label>
+
+                    <label class=" border-2 border-sky-500">Model</label>
+
+                    <label class=" border-2 border-sky-500">Year</label>
+
+                    <label class=" border-2 border-sky-500">Price</label>
+
+                    <label class=" border-2 border-sky-500">KM</label>
+
+                    <label class=" border-2 border-sky-500">Color</label>
+
+
+                    <label class=" border-2 border-sky-500">EngineCapacity</label>
+
+                    <label class=" border-2 border-sky-500">HP</label>
+
+                    <label class=" border-2 border-sky-500">SeatCount</label>
+
+                    <label class=" border-2 border-sky-500">Torque</label>
+
+                    <label class=" border-2 border-sky-500">MinAge</label>
+
+
+
+                    <label class=" border-2 border-sky-500">MinLisenceYear</label>
+
+
+                </div>
+
+                <div class="grid grid-raws-13 w-48 ml-2 rounded-md border-4 border-sky-500">
+                    <div class=" border-2 border-sky-500"> @Html.TextBoxFor(x => x.Vehicle.PlateNumber)</div>
+
+                    <div class=" border-2 border-sky-500"> @Html.TextBoxFor(x => x.Vehicle.Brand)</div>
+
+                    <div class=" border-2 border-sky-500"> @Html.TextBoxFor(x => x.Vehicle.Model)</div>
+
+                    <div class=" border-2 border-sky-500"> @Html.TextBoxFor(x => x.Vehicle.Year)</div>
+
+                    <div class=" border-2 border-sky-500"> @Html.TextBoxFor(x => x.Vehicle.Price)</div>
+
+                    <div class=" border-2 border-sky-500"> @Html.TextBoxFor(x => x.Vehicle.KM)</div>
+
+                    <div class=" border-2 border-sky-500"> @Html.TextBoxFor(x => x.Vehicle.Color)</div>
+
+                    <div class=" border-2 border-sky-500"> @Html.TextBoxFor(x => x.Vehicle.EngineCapacity)</div>
+
+                    <div class=" border-2 border-sky-500"> @Html.TextBoxFor(x => x.Vehicle.HP)</div>
+
+                    <div class=" border-2 border-sky-500"> @Html.TextBoxFor(x => x.Vehicle.SeatCount)</div>
+
+                    <div class=" border-2 border-sky-500"> @Html.TextBoxFor(x => x.Vehicle.Torque)</div>
+
+                    <div class=" border-2 border-sky-500"> @Html.TextBoxFor(x => x.Vehicle.MinAge)</div>
+
+                    <div class=" border-2 border-sky-500"> @Html.TextBoxFor(x => x.Vehicle.MinLisenceYear)</div>
+
+
+
+
+
+
+                </div>
+            </div>
+
+            <div class="w-48">
+                <label>Fuel Type</label>
+                <div class=" border-2 border-sky-500">
+
+
+                    <input type="radio" id="Gas" name="fuel" value="Gas">
+                    <label for="Gas">Gas</label><br>
+
+                    <input type="radio" id="Diesel" name="fuel" value="Diesel">
+                    <label for="Diesel">Diesel</label><br>
+
+                    <input type="radio" id="Electric" name="fuel" value="Electric">
+                    <label for="Electric">Electric</label><br>
+
+                    <input type="radio" id="Hybrid" name="fuel" value="Hybrid">
+                    <label for="Hybrid">Hybrid</label><br>
+
+                </div>
+
+                <label>Gear Type</label>
+
+                <div class=" border-2 border-sky-500">
+
+                    <input type="radio" id="Automatic" name="trans" value="Automatic">
+                    <label for="Automatic">Automatic</label><br>
+
+                    <input type="radio" id="Manual" name="trans" value="Manual">
+                    <label for="Manual">Manual</label><br>
+
+
+
+
+
+                </div>
+
+                <label>Body Type</label>
+                <div class=" border-2 border-sky-500">
+
+                    <input type="radio" id="Sedan" name="bodyType" value="Sedan">
+                    <label for="Sedan">Sedan</label><br>
+
+                    <input type="radio" id="Hatchback" name="bodyType" value="Hatchback">
+                    <label for="Hatchback">Hatchback</label><br>
+
+                    <input type="radio" id="SUV" name="bodyType" value="SUV">
+                    <label for="SUV">SUV</label><br>
+
+                    <input type="radio" id="Cabrio" name="bodyType" value="Cabrio">
+                    <label for="Cabrio">Cabrio</label><br>
+
+                    <input type="radio" id="Coupe" name="bodyType" value="Coupe">
+                    <label for="Coupe">Coupe</label><br>
+
+                    <input type="radio" id="Limousine" name="bodyType" value="Limousine">
+                    <label for="Limousine">Limousine</label><br>
+
+                    <input type="radio" id="Minivan" name="bodyType" value="Minivan">
+                    <label for="Minivan">Minivan</label><br>
+
+                </div>
+
+
+            </div>
+
+            <div>
+
+
+
+
+                <div>
+                    Isim Giriniz
+                </div>
+
+                <div>
+                    @Html.TextBoxFor(x => x.Image.Name)
+                </div>
+
+                <div>
+                    <input type="file" name="resim" value="" />
+                </div>
+
+                <div>
+                    <button class="btn btn-primary">Kaydet</button>
+                </div>
+            </div>
+
+            <div class="ml-8">
+
+                <button class="w-72 mt-4 text-teal-300  bg-teal-700 hover:bg-emerald-400 font-bold hover:text-cyan-900 py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="height:50px;">
+                    Add Vehicle
+                </button>
+            </div>
+
+            @TempData["result"]
+
+
+
+
+
+
+        }
+
+
     </div>
 </body>
 </html>
