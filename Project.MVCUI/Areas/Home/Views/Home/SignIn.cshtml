@@ -1,4 +1,4 @@
-﻿@model UserVM
+﻿
 @{
     Layout = null;
 }
@@ -8,7 +8,11 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>SignUp</title>
+    <title>ROYAL Motors</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Rental" name="keywords">
+    <meta content="Rent a car" name="description">
+
     <!-- Favicon -->
     <link href="../../Pictures/wallpapersden.com_daniel-craig-007-james-bond-aston-martin-car-photoshoot_7680x4320.ico" rel="icon">
 
@@ -297,6 +301,8 @@
             display: block;
         }
     </style>
+
+
 </head>
 <body>
     <header>
@@ -412,10 +418,10 @@
                                                 <a href="/Home/Home/Rental" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Listing</a>
                                             </li>
                                             <li>
-                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Detail</a>
+                                                <a href="/Home/Home/Rental" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Detail</a>
                                             </li>
                                             <li>
-                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Booking</a>
+                                                <a href="/Home/Home/Rental" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Booking</a>
                                             </li>
                                         </ul>
 
@@ -433,7 +439,7 @@
                                     <div class="lg:absolute bg-myblue-200 rounded-md p-2  left-1 hidden" id="dPDPages">
                                         <ul class="space-y-2 lg:w-48">
                                             <li>
-                                                <a href="/Home/Home/SignIn" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Sign In</a>
+                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Sign In</a>
                                             </li>
                                             <li>
                                                 <a href="/Home/Home/SignUp" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Sign Up</a>
@@ -466,72 +472,46 @@
 
         </div>
     </nav>
+    <!--Navbar end-->
+    <!--Search Start-->
+    <div>
 
-    @using (Html.BeginForm("SignUp", "Home", FormMethod.Post))
-    {
-<div class="mt-16 bg-sky-400 text-center" style="width:300px;height:680px">
+        @using (Html.BeginForm("SingIn", "Home", FormMethod.Post))
+        {
+            <div class="mt-16 ml-16 bg-sky-400 text-center" style="width:300px;height:300px">
 
-    <div class="grid grid-raw-2">
-        <label class=" text-xl text-teal-700">User Name</label>
-        <input name="userName" class="border-4 border-green-500 rounded-full " type="text" />
+                <div class="grid grid-raw-2">
+                    <label class=" text-xl text-teal-700">User Name</label>
+                    <input name="userName" class="border-4 border-green-500 rounded-full " type="text" />
+                </div>
+
+                <div class="grid grid-raw-2 mt-4">
+                    <label class=" text-xl text-teal-700">Password</label>
+                    <input name="password" class="border-4 border-green-500 rounded-full " type="text" />
+                </div>
+              
+
+                <div class="">
+                    <button class=" mt-16 bg-myblue-200 hover:bg-myorange text-mywhite font-bold  py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="height:50px;width:200px">
+                        Sign In
+                    </button>
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+        }
+
     </div>
-
-    <div class="grid grid-raw-2 mt-4">
-        <label class=" text-xl text-teal-700">Password</label>
-        <input name="password" class="border-4 border-green-500 rounded-full " type="text" />
-    </div>
-
-    <div class="grid grid-raw-2">
-        <label class=" text-xl text-teal-700">First Name</label>
-        <input name="firstName" class="border-4 border-green-500 rounded-full " type="text" />
-    </div>
-
-    <div class="grid grid-raw-2 mt-4">
-        <label class=" text-xl text-teal-700">Last Name</label>
-        <input name="lastName" class="border-4 border-green-500 rounded-full " type="text" />
-    </div>
-
-
-    <div class="grid grid-raw-2 mt-4">
-        <label class=" text-xl text-teal-700">Email</label>
-        <input name="email" class="border-4 border-green-500 rounded-full " type="text" />
-    </div>
-
-
-    <div class="grid grid-raw-2 mt-4">
-        <label class=" text-xl text-teal-700">Birthday</label>
-        <input name="birthday" class="border-4 border-green-500 rounded-full " type="date" />
-    </div>
-
-    <div class="grid grid-raw-2 mt-4">
-        <label class=" text-xl text-teal-700">Identification Number</label>
-        <input name="idNumber" class="border-4 border-green-500 rounded-full " type="text" />
-    </div>
-
-    <div class="grid grid-raw-2 mt-4">
-        <label class=" text-xl text-teal-700">Lisence Number</label>
-        <input name="lisenceNumber" class="border-4 border-green-500 rounded-full " type="text" />
-    </div>
-
-    <div class="">
-        <button class=" mt-2 bg-myblue-200 hover:bg-myorange text-mywhite font-bold  py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="height:50px;width:200px">
-            Sign Up
-        </button>
-    </div>
-
-
-
-
-
-
-
-</div>
-
-   
-        
-   
-            
-        
-    }
 </body>
 </html>

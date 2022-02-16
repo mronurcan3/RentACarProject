@@ -117,6 +117,10 @@
             display: block;
         }
 
+        #person:hover #infopage{
+            display: block;
+        }
+
         #btnPages:hover #dPDPages {
             display: block;
         }
@@ -331,6 +335,31 @@
                     <!--container-->
                     <div class="container px-4 flex flex-wrap mx-auto py-2 lg:space-x-2">
                         <!--brand-->
+
+                        @{
+
+                            string firstName = "";
+
+                            string lastName = "";
+
+                            decimal balance = 0;
+
+
+                            if (Model.User.Count == 1)
+                            {
+
+                                 firstName = Model.User[0].UserProfile.FirstName;
+
+                                 lastName = Model.User[0].UserProfile.LastName;
+
+                                balance = Model.User[0].UserProfile.Balance;
+
+                            }
+
+
+
+                         }
+                        
                         <!--brand-->
                         <!--toggler btn-->
                         <button class=" lg:hidden inline-flex items-center justify-center border h-100 w-10 rounded-md outline-none focus:outline-none ml-auto">
@@ -340,8 +369,8 @@
                         </button>
 
                         <!--menu-->
-                        <div class="w-full lg:inline-flex lg:w-auto mt-2 lg:mt-0">
-                            <ul class="grid grid-cols-5 lg:flex-row lg:space-x-2 space-y-2 lg:space-y-0">
+                        <div class="w-full lg:inline-flex lg:w-auto mt-2 pr-8 lg:mt-0">
+                            <ul class="grid grid-cols-6 lg:flex-row lg:space-x-2 space-y-2 lg:space-y-0">
                                 <li class="hover:bg-myorange rounded-md">
                                     <a href="/Home/Home/Index" class="flex px-4 py-2 font-weight-medium pl-6">Home</a>
                                 </li>
@@ -354,7 +383,7 @@
                                     <div class="lg:absolute bg-myblue-200 rounded-md p-2  left-1 hidden" id="dPDCars">
                                         <ul class="space-y-2 lg:w-48">
                                             <li>
-                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Listing</a>
+                                                <a href="/Home/Home/Rental" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Listing</a>
                                             </li>
                                             <li>
                                                 <a href="/Home/Home/Rental" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Detail</a>
@@ -378,10 +407,10 @@
                                     <div class="lg:absolute bg-myblue-200 rounded-md p-2  left-1 hidden" id="dPDPages">
                                         <ul class="space-y-2 lg:w-48">
                                             <li>
-                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Sign In</a>
+                                                <a href="/Home/Home/SignIn" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Sign In</a>
                                             </li>
                                             <li>
-                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Sing Up</a>
+                                                <a href="/Home/Home/SignUp" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Sing Up</a>
                                             </li>
 
                                         </ul>
@@ -399,7 +428,36 @@
                                     <a href="#" class="flex px-4 py-2 font-weight-medium ">Contact</a>
                                 </li>
 
+                                <li class="relative hover:bg-myorange  rounded-md" id="person">
+                                    <button href="#" class="flex px-4 py-2 font-weight-medium pl-6 ">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </button>
+                                    <div class="ml-2 grid grid-raws-2">
+                                        <label>@firstName @lastName</label>
+                                        
+                                        <label>@balance $</label>
+                                    </div>
+                                    <!--dropdown menu start-->
+                                    <div class="lg:absolute bg-myblue-200 rounded-md p-2  left-1 hidden" id="infopage">
+                                        <ul class="space-y-2 lg:w-48">
+                                            <li>
+                                                <a href="/Home/Home/AcountInfo" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Acount Info</a>
+                                            </li>
+
+
+                                        </ul>
+
+
+                                    </div>
+
+                                    <!--dropdown menu end-->
+                                </li>
+
                             </ul>
+
+                           
                         </div>
 
                     </div>
@@ -417,64 +475,14 @@
     <!-- Navbar End -->
     <!-- Search Start -->
 
-    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-    {
+    
+    
 
      
 
 
 
-        <div class="container bg-white ">
-            <div class="grid grid-cols-6 space-x-2">
-
-
-
-
-                <div class="">
-                    <select class=" mt-2" style="height: 50px;">
-                        <option selected>Pickup Location</option>
-                        <option value="1">Location 1</option>
-                        <option value="2">Location 2</option>
-                        <option value="3">Location 3</option>
-                    </select>
-                </div>
-                <div class="">
-                    <select class="  mt-2" style="height: 50px;">
-                        <option selected>Drop Location</option>
-                        <option value="1">Location 1</option>
-                        <option value="2">Location 2</option>
-                        <option value="3">Location 3</option>
-                    </select>
-                </div>
-                <div class=" mt-3">
-                    <div class=" mt-2" id="date">
-                        <input type="date" class="" name="date1" placeholder="Pickup Date" />
-                    </div>
-                </div>
-                <div class=" mt-3">
-                    <div class=" mt-2" id="date2">
-                        <input type="date" class="" name="date2" placeholder="Pickup Date" />
-                    </div>
-                </div>
-                <div class="">
-                    <select class=" mt-2" style="height: 50px;">
-                        <option selected>Select A Car</option>
-                        <option value="1">Car 1</option>
-                        <option value="2">Car 1</option>
-                        <option value="3">Car 1</option>
-                    </select>
-                </div>
-                <div class="">
-                    <button class=" mt-2 bg-myblue-200 hover:bg-myorange text-mywhite font-bold  py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="height:50px;width:200px">
-                        Search
-                    </button>
-                </div>
-
-
-
-            </div>
-        </div>
-    }
+       
     <!-- Search End -->
     <!--buraya bir carousel image slider lazim fakat yapamadim-->
     <!-- Carousel Start -->

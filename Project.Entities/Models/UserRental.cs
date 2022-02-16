@@ -20,9 +20,7 @@ namespace Project.Entities.Models
 
         public RentalStatus RentalStatus { get; set; }
 
-        public string PickUpLocation { get; set; }
-
-        public string DropOffLocation { get; set; }
+       
 
 
 
