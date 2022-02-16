@@ -54,7 +54,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
                 VehicleVM UVM = new VehicleVM()
                 {
-                    User = appUser,
+                    Users = appUser,
                 };
 
                 return View(UVM);
@@ -62,7 +62,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
             VehicleVM vvm = new VehicleVM()
             {
-                User = _appUser.GetActives(),
+                Users = _appUser.GetActives(),
             };
 
             return View(vvm);
@@ -667,7 +667,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
                 VehicleVM VVM = new VehicleVM()
                 {
-                    User = appUser,
+                    Users = appUser,
                 };
 
                 return View(VVM);
@@ -752,7 +752,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
             VehicleVM VVM = new VehicleVM()
             {
-                User = myAppUser,
+                Users = myAppUser,
             };
 
 
@@ -776,8 +776,9 @@ namespace Project.MVCUI.Areas.Home.Controllers
             
             string[] inf = finalPayment.Split(',');
 
+            int userID = Convert.ToInt32(inf[2]);
 
-            AppUser user = _appUser.FirstOrDefault(x => x.ID == Convert.ToInt32(inf[2]));
+            AppUser user = _appUser.FirstOrDefault(x => x.ID == userID);
 
             if (user.UserProfile.Balance >= Convert.ToDecimal(inf[4]))
             {
@@ -810,7 +811,12 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
                 _userRental.Add(userRental);
 
-                Vehicle vehicle = _vehicle.FirstOrDefault(x => x.ID == Convert.ToInt32(inf[3]));
+                int vehicleID = Convert.ToInt32(inf[3]);
+
+                Vehicle vehicle = _vehicle.FirstOrDefault(x => x.ID == vehicleID);
+
+                vehicle.UserRentalID = userID;
+                vehicle.UserRentalName = _appUser.FirstOrDefault(x => x.ID == userID).UserName;
 
                 vehicle.VehicleStatus = Entities.Enums.VehicleStatus.OnRent;
 

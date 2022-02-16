@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Project.Entities.Models;
+using Project.MVCUI.Tools;
 
 namespace Project.MVCUI.Areas.Admin.Controllers
 {
@@ -49,7 +51,7 @@ namespace Project.MVCUI.Areas.Admin.Controllers
 
         [HttpPost]
 
-        public ActionResult AddVehicle(VehicleVM vvm,string fuel,string trans,string bodyType)
+        public ActionResult AddVehicle(VehicleVM vvm,string fuel,string trans,string bodyType, Image testClass, HttpPostedFileBase resim)
         {
             switch (fuel)
             {
@@ -114,6 +116,13 @@ namespace Project.MVCUI.Areas.Admin.Controllers
             {
                 if(_vehicle.Any(x => x.PlateNumber != vvm.Vehicle.PlateNumber))
                 {
+                    testClass.ImagePath = ImageUploader.UploadImage("/Images/", resim);
+                    _image.Add(testClass);
+
+                    vvm.Vehicle.Image = testClass;
+                    vvm.Vehicle.VehicleStatus = Entities.Enums.VehicleStatus.Available;
+
+
                     _vehicle.Add(vvm.Vehicle);
 
                     TempData["result"] = "car successfully added";
@@ -141,6 +150,102 @@ namespace Project.MVCUI.Areas.Admin.Controllers
 
 
             return View();
+        }
+
+
+        public ActionResult ListVehicle()
+        {
+            
+
+            VehicleVM vvm = new VehicleVM()
+            {
+                Vehicles = _vehicle.GetActives
+            (),
+                
+                
+            };
+
+
+            return View(vvm);
+
+        }
+
+
+        public ActionResult UpdateVehicle()
+        {
+            return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult UpdateVehicle(string Price,string MinAge,string MinLisenceYear,string id)
+        {
+
+            try
+            {
+
+                bool myPrice = Convert.ToDecimal(Price) >= 1;
+
+                bool myMinAge = Convert.ToInt32(MinAge) >= 0;
+
+                bool MyMinLisenceYear = Convert.ToInt32(MinLisenceYear) >= 0;
+
+
+                if (myPrice && myMinAge && MyMinLisenceYear)
+                {
+
+
+                    int myID = Convert.ToInt32(id);
+
+                    Vehicle vehicle = _vehicle.FirstOrDefault(x => x.ID == myID);
+
+                    vehicle.Price = Convert.ToDecimal(Price);
+                    vehicle.MinAge = Convert.ToInt32(MinAge);
+                    vehicle.MinLisenceYear = Convert.ToInt32(MinLisenceYear);
+
+                    _vehicle.Update(vehicle);
+
+                    TempData["result2"] = "car successfully updated";
+
+                    return RedirectToAction("ListVehicle");
+                }
+
+                
+            }
+
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+            }
+
+
+
+
+           
+                TempData["result2"] = "the car could not be updated please check that the values are in the correct format";
+           
+
+
+            return RedirectToAction("ListVehicle");
+        }
+
+        public ActionResult DeleteVehicle(int id)
+        {
+            Vehicle vehicle = _vehicle.FirstOrDefault(x => x.ID == id);
+
+            if(vehicle.VehicleStatus == Entities.Enums.VehicleStatus.Available)
+            {
+                _vehicle.Delete(_vehicle.Find(id));
+
+                TempData["result"] = "car deleted successfully";
+
+            }
+
+            TempData["result"] = "the car could not be deleted because its use";
+
+
+
+            return RedirectToAction("ListVehicle");
         }
     }
 }

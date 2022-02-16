@@ -14,7 +14,7 @@
 </head>
 <body>
     <div>
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("AddVehicle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <div class="flex flex-raws-2">
 
@@ -151,7 +151,27 @@
 
             </div>
 
-           
+            <div>
+
+
+
+
+                <div>
+                    Isim Giriniz
+                </div>
+
+                <div>
+                    @Html.TextBoxFor(x => x.Image.Name)
+                </div>
+
+                <div>
+                    <input type="file" name="resim" value="" />
+                </div>
+
+                <div>
+                    <button class="btn btn-primary">Kaydet</button>
+                </div>
+            </div>
 
             <div class="ml-8">
 
