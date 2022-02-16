@@ -2,12 +2,33 @@
 
 <div class="ml-8 mt-8">
 
+    @{
 
-    <div class="bg-slate-900 text-white " style="width:400px; height:200px">
+        string color = "";
 
+        if (Session["user"] == null)
+        {
+            color = "bg-white";
+        }
+
+        else
+        {
+            color = "bg-slate-900";
+
+        }
+
+    }
+    
+
+
+     
+
+    <div class="@color text-white " style="width:400px; height:200px">
+
+        
         @{
 
-            Vehicle v = Model.Vehicles.FirstOrDefault();
+                Vehicle v = Model.Vehicles.FirstOrDefault();
 
             decimal a = Model.Date * v.Price;
 
@@ -23,26 +44,42 @@
 
         }
 
-        <div class="grid grid-raw-4 text-2xl">
-            <div class="ml-8"> for @Model.Date @day</div>
+        @{ 
 
-            <hr />
+            if (Session["user"] != null)
+            {
 
-            <div class="mt-2 ml-8"> Total Cars Price  @a $</div>
-            <hr />
 
-            <div class="mt-2 ml-8">Price per day @v.Price $</div>
 
-            <hr />
 
-            <div class="mt-2 text-4xl ml-24 ">
-                <button  class=" bg-green-600 hover:bg-green-800">Continue</button>
+
+
+                using (Html.BeginForm("FinalRent", "Home", FormMethod.Post))
+                {
+
+
+            <div class="grid grid-raw-4 text-2xl">
+                <div class="ml-8"> for @Model.Date @day</div>
+
+                <hr />
+
+                <div class="mt-2 ml-8"> Total Cars Price  @a $</div>
+                <hr />
+
+                <div class="mt-2 ml-8">Price per day @v.Price $</div>
+
+                <hr />
+
+                <div class="mt-2 text-4xl ml-24 ">
+                    <button name="finalPayment" value="@Model.Dates[0],@Model.Dates[1],@Session["user"],@v.ID,@a" class=" bg-green-600 hover:bg-green-800">Continue</button>
+                </div>
+                <hr />
+
             </div>
-            <hr />
+                    }
+                }
 
-        </div>
-
-        
+            }
 
     </div>
    

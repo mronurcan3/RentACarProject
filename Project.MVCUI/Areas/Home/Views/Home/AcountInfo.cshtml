@@ -1,4 +1,4 @@
-﻿@model UserVM
+﻿@model VehicleVM
 @{
     Layout = null;
 }
@@ -8,7 +8,11 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>SignUp</title>
+    <title>ROYAL Motors</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Rental" name="keywords">
+    <meta content="Rent a car" name="description">
+
     <!-- Favicon -->
     <link href="../../Pictures/wallpapersden.com_daniel-craig-007-james-bond-aston-martin-car-photoshoot_7680x4320.ico" rel="icon">
 
@@ -297,6 +301,8 @@
             display: block;
         }
     </style>
+
+
 </head>
 <body>
     <header>
@@ -386,6 +392,31 @@
                     <!--container-->
                     <div class="container px-4 flex flex-wrap mx-auto py-2 lg:space-x-2">
                         <!--brand-->
+
+                        @{
+
+                            string firstName = "";
+
+                            string lastName = "";
+
+                            decimal balance = 0;
+
+
+                            if (Model.User.Count == 1)
+                            {
+
+                                firstName = Model.User[0].UserProfile.FirstName;
+
+                                lastName = Model.User[0].UserProfile.LastName;
+
+                                balance = Model.User[0].UserProfile.Balance;
+
+                            }
+
+
+
+                        }
+
                         <!--brand-->
                         <!--toggler btn-->
                         <button class=" lg:hidden inline-flex items-center justify-center border h-100 w-10 rounded-md outline-none focus:outline-none ml-auto">
@@ -395,8 +426,8 @@
                         </button>
 
                         <!--menu-->
-                        <div class="w-full lg:inline-flex lg:w-auto mt-2 lg:mt-0">
-                            <ul class="grid grid-cols-5 lg:flex-row lg:space-x-2 space-y-2 lg:space-y-0">
+                        <div class="w-full lg:inline-flex lg:w-auto mt-2 pr-8 lg:mt-0">
+                            <ul class="grid grid-cols-6 lg:flex-row lg:space-x-2 space-y-2 lg:space-y-0">
                                 <li class="hover:bg-myorange rounded-md">
                                     <a href="/Home/Home/Index" class="flex px-4 py-2 font-weight-medium pl-6">Home</a>
                                 </li>
@@ -412,7 +443,7 @@
                                                 <a href="/Home/Home/Rental" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Listing</a>
                                             </li>
                                             <li>
-                                                <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Detail</a>
+                                                <a href="/Home/Home/Rental" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Detail</a>
                                             </li>
                                             <li>
                                                 <a href="#" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Car Booking</a>
@@ -436,7 +467,7 @@
                                                 <a href="/Home/Home/SignIn" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Sign In</a>
                                             </li>
                                             <li>
-                                                <a href="/Home/Home/SignUp" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Sign Up</a>
+                                                <a href="/Home/Home/SignUp" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Sing Up</a>
                                             </li>
 
                                         </ul>
@@ -454,7 +485,36 @@
                                     <a href="#" class="flex px-4 py-2 font-weight-medium ">Contact</a>
                                 </li>
 
+                                <li class="relative hover:bg-myorange  rounded-md" id="person">
+                                    <button href="#" class="flex px-4 py-2 font-weight-medium pl-6 ">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </button>
+                                    <div class="ml-2 grid grid-raws-2">
+                                        <label>@firstName @lastName</label>
+
+                                        <label>@balance $</label>
+                                    </div>
+                                    <!--dropdown menu start-->
+                                    <div class="lg:absolute bg-myblue-200 rounded-md p-2  left-1 hidden" id="infopage">
+                                        <ul class="space-y-2 lg:w-48">
+                                            <li>
+                                                <a href="/Home/Home/AcountInfo" class="flex p-2 font-medium rounded-md hover:bg-myorange ">Acount Info</a>
+                                            </li>
+
+
+                                        </ul>
+
+
+                                    </div>
+
+                                    <!--dropdown menu end-->
+                                </li>
+
                             </ul>
+
+
                         </div>
 
                     </div>
@@ -466,59 +526,77 @@
 
         </div>
     </nav>
+    <div class=" ml-4 grid grid-raws-3 uppercase rounded-md border-4 border-lime-500" style="width:300px; height:250px">
+        <div>
+            <label class="text-2xl">Name:</label>
+            <label class=" text-xl">@Model.User[0].UserProfile.FirstName</label>
+        </div>
+        <hr />
+        <div>
+            <label class="text-2xl">Last Name:</label>
+            <label class=" text-xl">@Model.User[0].UserProfile.LastName</label>
+        </div>
+        <hr />
+        <div>
+            <label class="text-2xl">Balance:</label>
+            <label class=" text-xl">@Model.User[0].UserProfile.Balance</label>
+        </div>
+        <hr />
 
-    @using (Html.BeginForm("SignUp", "Home", FormMethod.Post))
-    {
-<div class="mt-16 bg-sky-400 text-center" style="width:300px;height:680px">
 
-    <div class="grid grid-raw-2">
-        <label class=" text-xl text-teal-700">User Name</label>
-        <input name="userName" class="border-4 border-green-500 rounded-full " type="text" />
     </div>
 
-    <div class="grid grid-raw-2 mt-4">
-        <label class=" text-xl text-teal-700">Password</label>
-        <input name="password" class="border-4 border-green-500 rounded-full " type="text" />
+    @using (Html.BeginForm("AcountInfo", "Home", FormMethod.Post))
+    {<div class=" mt-4  ml-4  uppercase rounded-md border-4 border-lime-500" style="width:400px; height:350px">
+
+    <div class="flex flex-raw-2">
+        <div class="grid grid-raw-6">
+
+            <label  class="mt-2">Card Number</label>
+
+            <label class="mt-2">Full Name</label>
+
+            <label class="mt-2">CVV</label>
+
+            <label class="mt-2">CardExpiryYear</label>
+
+            <label class="mt-2">CardExpiryMonth</label>
+
+            <label class="mt-2">Balance</label>
+
+
+        </div>
+
+        <div class="grid grid-raw-6 ml-2">
+
+
+            <input name="cardUserName" id="CardUserName" class="mt-2  bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
+
+            <input name="securityNumber" id="SecurityNumber" class="mt-2  bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
+
+            
+            <input name="cardNumber" id="CardNumber" class=" mt-2 bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
+
+            <input name="cardExpiryMonth" id="CardExpiryMonth" class="mt-2 bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
+
+
+
+            <input name="cardExpiryYear" id="CardExpiryYear" class="mt-2 bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
+
+
+
+            <input name="shoppingPrice" id="ShoppingPrice" class="mt-2  bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
+
+        </div>
     </div>
 
-    <div class="grid grid-raw-2">
-        <label class=" text-xl text-teal-700">First Name</label>
-        <input name="firstName" class="border-4 border-green-500 rounded-full " type="text" />
+    <button name="userID" value="@Model.User[0].ID" class="w-72 mt-4 ml-4 text-teal-300  bg-teal-700 hover:bg-emerald-400 font-bold hover:text-cyan-900 py-2 px-4 rounded  " style="height:50px;">
+        Add Money
+    </button>
+
+    <div class="mt-48">
+        <label class="text-2xl">@TempData["ConfirmStatus"]</label>
     </div>
-
-    <div class="grid grid-raw-2 mt-4">
-        <label class=" text-xl text-teal-700">Last Name</label>
-        <input name="lastName" class="border-4 border-green-500 rounded-full " type="text" />
-    </div>
-
-
-    <div class="grid grid-raw-2 mt-4">
-        <label class=" text-xl text-teal-700">Email</label>
-        <input name="email" class="border-4 border-green-500 rounded-full " type="text" />
-    </div>
-
-
-    <div class="grid grid-raw-2 mt-4">
-        <label class=" text-xl text-teal-700">Birthday</label>
-        <input name="birthday" class="border-4 border-green-500 rounded-full " type="date" />
-    </div>
-
-    <div class="grid grid-raw-2 mt-4">
-        <label class=" text-xl text-teal-700">Identification Number</label>
-        <input name="idNumber" class="border-4 border-green-500 rounded-full " type="text" />
-    </div>
-
-    <div class="grid grid-raw-2 mt-4">
-        <label class=" text-xl text-teal-700">Lisence Number</label>
-        <input name="lisenceNumber" class="border-4 border-green-500 rounded-full " type="text" />
-    </div>
-
-    <div class="">
-        <button class=" mt-2 bg-myblue-200 hover:bg-myorange text-mywhite font-bold  py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="height:50px;width:200px">
-            Sign Up
-        </button>
-    </div>
-
 
 
 
@@ -527,11 +605,12 @@
 
 </div>
 
-   
-        
-   
-            
-        
+
+
     }
+
+    <script>
+
+    </script>
 </body>
 </html>

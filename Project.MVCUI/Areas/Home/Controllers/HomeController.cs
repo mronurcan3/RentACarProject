@@ -1,11 +1,14 @@
 ﻿using Project.BLL.DesignPatterns.GenericRepository.ConRep;
 using Project.Common;
 using Project.Entities.Models;
+using Project.MVCUI.Areas.Home.ConsumerDTO;
 using Project.MVCUI.Areas.Home.ModelVM;
 using Project.MVCUI.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -17,6 +20,8 @@ namespace Project.MVCUI.Areas.Home.Controllers
         ImageRepository _image;
         AppUserRepository _appUser;
         UserProfileRepository _profile;
+        RentalRepository _rental;
+        UserRentalRepository _userRental;
 
         
 
@@ -27,12 +32,40 @@ namespace Project.MVCUI.Areas.Home.Controllers
             _image = new ImageRepository();
             _appUser = new AppUserRepository();
             _profile = new UserProfileRepository();
+            _rental = new RentalRepository();
+
+            _userRental = new UserRentalRepository();
         }
 
         // GET: Home/Home
         public ActionResult Index()
         {
-            return View();
+
+
+            if(Session["user"] != null)
+            {
+                string ids = Session["user"].ToString();
+
+                int id = Convert.ToInt32(ids);
+
+                List<AppUser> appUser = new List<AppUser>();
+
+                appUser.Add(_appUser.FirstOrDefault(x => x.ID == id));
+
+                VehicleVM UVM = new VehicleVM()
+                {
+                    User = appUser,
+                };
+
+                return View(UVM);
+            }
+
+            VehicleVM vvm = new VehicleVM()
+            {
+                User = _appUser.GetActives(),
+            };
+
+            return View(vvm);
         }
 
         [HttpPost]
@@ -579,27 +612,229 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
         public ActionResult Activation(Guid id)
         {
-            List<AppUser> willactive = _appUser.Where(x => x.ActivationCode == id);
+            AppUser willactive = _appUser.FirstOrDefault(x => x.ActivationCode == id);
             if (willactive != null)
             {
-                willactive[0].Role = Entities.Enums.UserRole.Member;
-                _appUser.Update(willactive[0]);
-                TempData["HesapAktifMi"] = "Hesabınız aktif hale getirildi";
-                return RedirectToAction("Index", "Home");
+                willactive.Role = Entities.Enums.UserRole.Member;
+                _appUser.Update(willactive);
+                TempData["isAccountActive"] = "Your e-mail has been successfully confirmed";
+                return RedirectToAction("EmailConfirm", "Home");
             }
-            TempData["HesapAktifMi"] = "Hesabınız bulunamadı";
-            return RedirectToAction("Index", "Home");
+            TempData["isAccountActive"] = "Could not found any account";
+            return RedirectToAction("EmailConfirm", "Home");
         }
 
 
 
-        public PartialViewResult EmailConfirm()
+        public ActionResult EmailConfirm()
+        {
+            return View();
+
+        }
+
+
+        public ActionResult SignIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult SingIn(string userName,string password)
+        {
+            if(_appUser.Any(x => x.UserName == userName && x.Password == password))
+            {
+
+                AppUser user = _appUser.FirstOrDefault(x => x.UserName == userName && x.Password == password);
+
+                Session["user"] = user.ID;
+            }
+
+
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult AcountInfo()
+        {
+            if(Session["user"] != null)
+            {
+                int id = Convert.ToInt32(Session["user"]);
+
+                List<AppUser> appUser = new List<AppUser>();
+
+                appUser.Add(_appUser.FirstOrDefault(x => x.ID == id));
+
+                VehicleVM VVM = new VehicleVM()
+                {
+                    User = appUser,
+                };
+
+                return View(VVM);
+            }
+
+            return RedirectToAction("Index");
+
+
+        }
+
+
+        [HttpPost]
+
+        public ActionResult AcountInfo(string cardUserName, string securityNumber, string cardNumber, string cardExpiryMonth, string cardExpiryYear, string shoppingPrice,string userID)
         {
 
+            List<AppUser> myAppUser = new List<AppUser>();
 
-            return PartialView("_EmailConfirm");
+            PaymentDTO PDTO = new PaymentDTO()
+            {
+                CardUserName = cardUserName,
+                SecurityNumber = securityNumber,
+                CardNumber = cardNumber,
+                CardExpiryMonth = Convert.ToInt32(cardExpiryMonth),
+                CardExpiryYear = Convert.ToInt32(cardExpiryYear),
+                ShoppingPrice = Convert.ToDecimal(shoppingPrice),
+
+
+            };
+
+
+            bool result;
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44304/api/");
+
+                Task<HttpResponseMessage> postTask = client.PostAsJsonAsync("Payment/ReceivePayment", PDTO);
+
+                HttpResponseMessage sonuc;
+
+                try
+                {
+                   sonuc = postTask.Result;
+                }
+
+                catch (Exception ex)
+                {
+
+                    TempData["ConfirmStatus"] = "The transaction was rejected by your bank";
+
+                    return View();
+                }
+
+                if (sonuc.IsSuccessStatusCode) result = true;
+
+                else result = false;
+
+                if (result)
+                {
+                    int id = Convert.ToInt32(userID);
+
+                    AppUser appUser = _appUser.FirstOrDefault(x => x.ID == id);
+
+                    appUser.UserProfile.Balance += Convert.ToDecimal(shoppingPrice);
+
+                    _appUser.Update(appUser);
+
+                    TempData["ConfirmStatus"] = $"The {shoppingPrice}$ transaction has been confirmed by your bank.";
+
+                    myAppUser.Add(appUser);
+
+                }
+
+
+
+
+
+            }
+
+
+
+            VehicleVM VVM = new VehicleVM()
+            {
+                User = myAppUser,
+            };
+
+
+
+
+
+            return View(VVM);
 
         }
+
+            
+        public ActionResult FinalRent()
+        {
+
+            return View();
+        }
+        [HttpPost]
+
+        public ActionResult FinalRent(string finalPayment)
+        {
+            
+            string[] inf = finalPayment.Split(',');
+
+
+            AppUser user = _appUser.FirstOrDefault(x => x.ID == Convert.ToInt32(inf[2]));
+
+            if (user.UserProfile.Balance >= Convert.ToDecimal(inf[4]))
+            {
+
+
+
+                user.UserProfile.Balance -= Convert.ToDecimal(inf[4]);
+
+                _appUser.Update(user);
+
+                Rental rent = new Rental
+                {
+                    AppUserID = Convert.ToInt32(inf[2]),
+
+                    ReservationStatus = Entities.Enums.ReservationStatus.Start,
+                };
+
+                _rental.Add(rent);
+
+                int rentalID = _rental.FirstOrDefault(x => x.ID == rent.ID).ID;
+
+                UserRental userRental = new UserRental()
+                {
+                    RentalID = rentalID,
+                    VehicleID = Convert.ToInt32(inf[3]),
+                    RentalStart = Convert.ToDateTime(inf[0]),
+                    RentalEnd = Convert.ToDateTime(inf[1]),
+                    RentalStatus = Entities.Enums.RentalStatus.RentalOn,
+                };
+
+                _userRental.Add(userRental);
+
+                Vehicle vehicle = _vehicle.FirstOrDefault(x => x.ID == Convert.ToInt32(inf[3]));
+
+                vehicle.VehicleStatus = Entities.Enums.VehicleStatus.OnRent;
+
+                _vehicle.Update(vehicle);
+
+
+            }
+
+
+
+            
+            
+
+                
+
+
+            return View();
+        }
+
+        
+        
+
+
+
 
 
 
