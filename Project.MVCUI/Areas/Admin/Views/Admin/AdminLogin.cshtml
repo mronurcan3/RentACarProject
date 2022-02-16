@@ -1,0 +1,324 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AdminLogin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        /* Fixed sidenav, full height */
+        .sidenav {
+            height: 100%;
+            width: 350px;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #0f172a;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+            /* Style the sidenav links and the dropdown button */
+            .sidenav a, .dropdown-btn {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #818181;
+                display: block;
+                border: none;
+                background: none;
+                width: 100%;
+                text-align: left;
+                cursor: pointer;
+                outline: none;
+            }
+
+                /* On mouse-over */
+                .sidenav a:hover, .dropdown-btn:hover {
+                    color: #f1f1f1;
+                }
+
+        /* Main content */
+        .main {
+            margin-left: 200px; /* Same as the width of the sidenav */
+            font-size: 20px; /* Increased text to enable scrolling */
+            padding: 0px 10px;
+        }
+
+        /* Add an active class to the active dropdown button */
+        .active {
+            background-color: #1e3a8a;
+            color: white;
+        }
+
+        /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+        .dropdown-container {
+            display: none;
+            background-color: #262626;
+            padding-left: 8px;
+        }
+
+        /* Optional: Style the caret down icon */
+        .fa-caret-down {
+            float: right;
+            padding-right: 8px;
+        }
+
+        m
+        /* Some media queries for responsiveness */
+        @@media screen and (max-height: 450px) {
+            .sidenav
+
+        {
+            padding-top: 15px;
+        }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+
+        }
+
+        .myscroll-scrollbar-thumb {
+            background: red;
+            border-radius: 10px;
+        }
+    </style>
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: red;
+            border-radius: 10px;
+        }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #b30000;
+            }
+    </style>
+    <script>
+
+        tailwind.config = {
+            theme: {
+
+                extend: {
+
+                    colors: {
+
+                        myorange: '#06b6d4',
+                        myblue: {
+                            100: '#0f172a',
+                            200: '#1e3a8a',
+                            300: '#9CC4E4',
+                            400: '#343838',
+                            500: '#00DFFC',
+                            600: '#005F6B'
+
+                        },
+
+                        mywhite: '#E9F2F9',
+
+                        myred: '#99173C',
+
+                        mygrey: {
+
+                            100: '#0f172a',
+                            200: '#1e293b',
+                        },
+
+                        myyellow: {
+
+                            100: '#06b6d4',
+                            200: '#22d3ee',
+                        }
+
+
+                    },
+
+                    fontFamily: {
+
+                        inter: ['Inter', 'sans-serif']
+
+
+                    },
+
+                    fontSize: {
+
+                        xs: '0.8125rem'
+
+
+                    },
+
+                    spacing: {
+
+                        '100': '36rem'
+                    }
+
+
+                }
+
+            }
+
+
+        }
+
+
+
+    </script>
+
+    <style>
+
+        .my-Carousel {
+            color: rgb(255 141 0);
+        }
+
+        .carousel-Button {
+            background-color: rgb(255 141 0);
+            color: rgb(255, 255, 255)
+        }
+
+        #testing123:hover {
+            background-color: #ff0000;
+        }
+
+
+        #btnCars:hover #dPDCars {
+            display: block;
+        }
+
+        #btnPages:hover #dPDPages {
+            display: block;
+        }
+
+        #btnfilter1: #pagefilter2 {
+            display: block;
+        }
+
+        .about {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .myicon {
+            margin-top: 40px
+        }
+
+        .myicontext {
+            margin-top: 30px
+        }
+
+        .Benner {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <style>
+        .mydropbtn {
+            background-color: #0f172a;
+            color: #eab308;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #0f172a;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+        @using (Html.BeginForm("AdminLogin", "Admin", FormMethod.Post))
+        {
+        <div class="mt-16 ml-16 bg-sky-400 text-center" style="width:300px;height:300px">
+
+            <div class="grid grid-raw-2">
+                <label class=" text-xl text-teal-700">Admin Name</label>
+                <input name="adminName" class="border-4 border-green-500 rounded-full " type="text" />
+            </div>
+
+            <div class="grid grid-raw-2 mt-4">
+                <label class=" text-xl text-teal-700">Password</label>
+                <input name="password" class="border-4 border-green-500 rounded-full " type="text" />
+            </div>
+
+
+
+            <div class="">
+                <button class=" mt-16 bg-myblue-200 hover:bg-myorange text-mywhite font-bold  py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="height:50px;width:200px">
+                    Sign In As Admin
+                </button>
+            </div>
+
+            @TempData["result"]
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+        }
+
+    </div>
+</body>
+</html>

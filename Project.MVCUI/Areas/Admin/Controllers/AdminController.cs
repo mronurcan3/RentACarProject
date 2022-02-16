@@ -38,7 +38,33 @@ namespace Project.MVCUI.Areas.Admin.Controllers
         }
 
 
+        public ActionResult AdminLogin()
+        {
+            return View();
+        }
 
+        [HttpPost]
+
+        public ActionResult AdminLogin(string adminName, string password)
+        {
+            if(_appUser.Any(x => x.UserName == adminName && x.Password == password && x.Role == Entities.Enums.UserRole.Admin))
+            {
+
+                AppUser user = _appUser.FirstOrDefault(x => x.UserName == adminName && x.Password == password && x.Role == Entities.Enums.UserRole.Admin );
+
+                Session["admin"] = user.ID;
+
+                return RedirectToAction("ListVehicle");
+
+
+            }
+
+            TempData["result"] = "There is no admin match";
+
+            return View();
+
+            
+        }
 
 
         // GET: Admin/Admin
@@ -155,12 +181,18 @@ namespace Project.MVCUI.Areas.Admin.Controllers
 
         public ActionResult ListVehicle()
         {
-            
+            List<AppUser> appUser = new List<AppUser>();
+
+            int id = Convert.ToInt32(Session["admin"]);
+
+            appUser.Add(_appUser.FirstOrDefault(x => x.ID == id));
 
             VehicleVM vvm = new VehicleVM()
             {
                 Vehicles = _vehicle.GetActives
             (),
+
+                Users = appUser,
                 
                 
             };

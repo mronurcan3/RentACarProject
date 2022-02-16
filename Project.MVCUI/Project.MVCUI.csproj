@@ -350,6 +350,7 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Admin\AddVehicle.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\ListVehicle.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AdminLogin.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

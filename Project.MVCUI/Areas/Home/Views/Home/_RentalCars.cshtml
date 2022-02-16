@@ -157,10 +157,12 @@
 
                         <label class="ml-4">Min Driver Lisence: @item.MinLisenceYear</label>
                     </div>
+                    <div>
+                        <button class="w-48 mt-4 text-teal-300  bg-teal-700 hover:bg-emerald-400 font-bold hover:text-cyan-900 py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="height:50px;">
+                            @Html.ActionLink("Rent it now", "Payment", "Home", new { id = item.ID }, new { Area = "Home" })
+                        </button>
 
-                    <button class="w-72 mt-4 text-teal-300  bg-teal-700 hover:bg-emerald-400 font-bold hover:text-cyan-900 py-2 px-4 rounded focus:outline-none focus:shadow-outline" style="height:50px;" type="button">
-                        @Html.ActionLink("Rent", "Payment", "Home", new { id = item.ID }, new { Area = "Home"  })
-                    </button>
+                    </div>
 
                    
 
