@@ -46,5 +46,101 @@ namespace Project.MVCUI.Areas.Admin.Controllers
 
             return View();
         }
+
+        [HttpPost]
+
+        public ActionResult AddVehicle(VehicleVM vvm,string fuel,string trans,string bodyType)
+        {
+            switch (fuel)
+            {
+                case "Gas":
+                    vvm.Vehicle.Fuel = Entities.Enums.FuelType.Gas;
+                    break;
+                case "Diesel":
+                    vvm.Vehicle.Fuel = Entities.Enums.FuelType.Diesel;
+                    break;
+                case "Electric":
+                    vvm.Vehicle.Fuel = Entities.Enums.FuelType.Electric;
+                    break;
+                case "Hybrid":
+                    vvm.Vehicle.Fuel = Entities.Enums.FuelType.Hybrid;
+                    break;
+                default:
+                    break;
+            }
+
+            switch (trans)
+            {
+                case "Automatic":
+                    vvm.Vehicle.Gear = Entities.Enums.GearType.Automatic;
+                    break;
+                case "Manual":
+                    vvm.Vehicle.Gear = Entities.Enums.GearType.Manual;
+                    break;
+                default:
+                    break;
+            }
+
+            switch (bodyType)
+            {
+                case "Sedan":
+                    vvm.Vehicle.Body = Entities.Enums.BodyType.Sedan;
+                    break;
+                case "Hatchback":
+                    vvm.Vehicle.Body = Entities.Enums.BodyType.Hatchback;
+                    break;
+                case "SUV":
+                    vvm.Vehicle.Body = Entities.Enums.BodyType.SUV;
+                    break;
+                case "Cabrio":
+                    vvm.Vehicle.Body = Entities.Enums.BodyType.Cabrio;
+                    break;
+                case "Coupe":
+                    vvm.Vehicle.Body = Entities.Enums.BodyType.Coupe;
+                    break;
+                case "Limousine":
+                    vvm.Vehicle.Body = Entities.Enums.BodyType.Limousine;
+                    break;
+                case "Minivan":
+                    vvm.Vehicle.Body = Entities.Enums.BodyType.Minivan;
+                    break;
+
+                default:
+                    break;
+            }
+
+
+            if(vvm.Vehicle.Price != 0 && vvm.Vehicle.Fuel != 0 && vvm.Vehicle.SeatCount != 0 && vvm.Vehicle.Body != 0 && vvm.Vehicle.Brand != null && vvm.Vehicle.Color != null && vvm.Vehicle.EngineCapacity != 0 && vvm.Vehicle.Gear != 0 && vvm.Vehicle.HP != 0 && vvm.Vehicle.KM >= 0 && vvm.Vehicle.PlateNumber != null && vvm.Vehicle.MinAge >= 0 && vvm.Vehicle.MinLisenceYear >= 0 && vvm.Vehicle.Torque != 0 && vvm.Vehicle.Year != 0 && vvm.Vehicle.Model != null)
+            {
+                if(_vehicle.Any(x => x.PlateNumber != vvm.Vehicle.PlateNumber))
+                {
+                    _vehicle.Add(vvm.Vehicle);
+
+                    TempData["result"] = "car successfully added";
+
+                    return View();
+
+                }
+
+                else
+                {
+                    TempData["result"] = "There is another vehicle registered to this plate";
+                }
+
+
+                
+
+            }
+
+            TempData["result"] = "Make sure that the entered values are in the correct format.";
+
+
+
+
+
+
+
+            return View();
+        }
     }
 }
