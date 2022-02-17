@@ -41,7 +41,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
         public ActionResult Index()
         {
 
-
+            //burasi eger kullanici giris yaptiysa kullaniciyi taniyip onun bilgilerini gostermek icin var
             if(Session["user"] != null)
             {
                 string ids = Session["user"].ToString();
@@ -68,19 +68,15 @@ namespace Project.MVCUI.Areas.Home.Controllers
             return View(vvm);
         }
 
-        [HttpPost]
-
-        public ActionResult Index(DateTime date1,DateTime date2)
-        {
-            return View();
-        }
-
+        
 
         public ActionResult Rental()
         {
             List<Vehicle> allVehicles = _vehicle.Where(x => x.VehicleStatus == Entities.Enums.VehicleStatus.Available);
 
             Dictionary<string, int> myVehiclesUnits = new Dictionary<string, int>();
+
+            //burada yer alan her bir dongu gerekli filtrelemeyi yapmak icin tam olarak hangi tipten kac edet var ogrenmek icin olusturulmustur
 
             foreach (Vehicle item in allVehicles )
             {
@@ -177,7 +173,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
                 appUser.AddRange(_appUser.GetAll());
             }
 
-
+            //gerekli araclar ve kullanici ve filtereleme nesneleri aktarilmsitir 
             VehicleVM VVM = new VehicleVM()
             {
                 Vehicles = _vehicle.Where(x => x.VehicleStatus == Entities.Enums.VehicleStatus.Available),
@@ -194,7 +190,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
         public ActionResult Rental(string PickUp)
         {
-             
+             //filterlenmis araclari getirir partial viev ile
 
             return RedirectToAction("GetFilterCars");
         }
@@ -205,7 +201,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
 
        
-
+        // bu sadece resim yukleme sinifi test etmek icin olusturulmustur
         public ActionResult Index2()
         {
             return View();
@@ -238,7 +234,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
         public PartialViewResult GetFilterCars(string filter,string typ)
         {
-
+            //enum kullanildigi icin switch case ile hizlica belirleme yapmak icin
             switch (typ)
             {
                 case "type":
@@ -601,7 +597,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
         public ActionResult SignUp(string userName, string password,string firstName,string lastName, string email, DateTime birthday, string idNumber, string lisenceNumber)
         {
 
-            
+            //kullanici kayidi icin
 
             if(_appUser.Any(x => x.UserName == userName))
             {
@@ -651,7 +647,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
         }
 
         public ActionResult Activation(Guid id)
-        {
+        { //mail activasyonu
             AppUser willactive = _appUser.FirstOrDefault(x => x.ActivationCode == id);
             if (willactive != null)
             {
@@ -667,7 +663,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
 
         public ActionResult EmailConfirm()
-        {
+        {  //email dogrulama bilgisi icin
             return View();
 
         }
@@ -697,6 +693,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
         public ActionResult AcountInfo()
         {
+            //hesap bilgilerini gormek icin
             if(Session["user"] != null)
             {
                 int confrim = 0;
@@ -719,6 +716,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
                     List<int> myRentalID = new List<int>();
 
+                    //kullanicin hangi araclari kiraladigini gormek icin
                    foreach(Rental item in myRental)
                     {
                         if(item.AppUserID == appUser[0].ID)
@@ -797,7 +795,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
         public ActionResult AcountInfo(string cardUserName, string securityNumber, string cardNumber, string cardExpiryMonth, string cardExpiryYear, string shoppingPrice,string userID)
         {
-
+            //api ile kredi kartindan banka transferi yapmak icin
             List<AppUser> myAppUser = new List<AppUser>();
 
             PaymentDTO PDTO = new PaymentDTO()
@@ -887,6 +885,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
         public ActionResult FinalRent(string finalPayment)
         {
+            //kiralanan aracin bilgilerini ogrenmek icin
             
             string[] inf = finalPayment.Split(',');
 
