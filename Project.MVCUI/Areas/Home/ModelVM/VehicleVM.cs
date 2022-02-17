@@ -27,6 +27,8 @@ namespace Project.MVCUI.Areas.Home.ModelVM
         public List<DateTime> Dates { get; set; }
 
         public List<AppUser> Users { get; set; }
+
+        public int Confirm { get; set; }
     }
 
 }

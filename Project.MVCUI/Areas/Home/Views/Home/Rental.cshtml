@@ -1055,69 +1055,8 @@
             </div>
         </div>
         <hr />
-        <button class="dropdown-btn flex flex-raw-2  justify-between uppercase">
-            Deposit Fee
-            <i class="fa fa-caret-down"></i>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2 dropbtn  " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-        </button>
-        <div class="dropdown-container">
-            <div class="myscroll  flex flex-raw-2 overflow-y-auto h-40">
-
-
-
-                <div class="grid grid-raw-2 ">
-
-
-                    <label class="main ml-2  text-white">
-
-                        <input class="deposit" value="1000-2000" type="button">
-                        <span class="geekmark"></span>
-
-                    </label>
-                    <label class="main ml-2  text-white">
-
-                        <input class="deposit" value="2000-3000" type="button">
-                        <span class="geekmark"></span>
-
-                    </label>
-
-
-
-
-
-
-
-
-
-
-
-
-                </div>
-                <div class="grid grid-raw-2">
-
-                    <label class="main ml-2  text-white">
-
-                        <input class="deposit" value="3000-4000" type="button">
-                        <span class="geekmark"></span>
-
-                    </label>
-                    <label class="main ml-2  text-white">
-
-                        <input class="deposit" value="5000" type="button">
-                        <span class="geekmark"></span>
-
-                    </label>
-
-
-
-
-
-                </div>
-
-            </div>
-        </div>
+       
+        
     </div>
 
     <!--Sidebar Filter End-->
@@ -1196,36 +1135,7 @@
 
             })
 
-            $(".deposit").click(function (element) {
-
-
-
-
-                $.ajax({
-
-                    url: "https://localhost:44330/Home/Home/GetFilterCars/",
-                    type: "Get",
-                    data: { filter: element.target.value, typ: "deposit" },
-                    success: function (comesPage) {
-                        $("#allCars").html(comesPage);
-
-                    },
-
-
-
-
-
-                })
-
-
-
-
-
-
-
-
-            })
-
+            
             $(".model").click(function (element) {
 
 

@@ -601,7 +601,7 @@ namespace Project.MVCUI.Areas.Home.Controllers
         public ActionResult SignUp(string userName, string password,string firstName,string lastName, string email, DateTime birthday, string idNumber, string lisenceNumber)
         {
 
-            string mypassword = DantexCrypt.Crypt(password);
+            
 
             if(_appUser.Any(x => x.UserName == userName))
             {
@@ -699,15 +699,89 @@ namespace Project.MVCUI.Areas.Home.Controllers
         {
             if(Session["user"] != null)
             {
+                int confrim = 0;
+
+                List<Vehicle> vehicle = new List<Vehicle>();
+
                 int id = Convert.ToInt32(Session["user"]);
 
                 List<AppUser> appUser = new List<AppUser>();
 
                 appUser.Add(_appUser.FirstOrDefault(x => x.ID == id));
 
+                int appuserID = appUser[0].ID;
+
+                if (_rental.Any(x => x.AppUserID == appuserID))
+                {
+                    List<Vehicle> vehicles = new List<Vehicle>();
+
+                    List<Rental> myRental = _rental.GetActives();
+
+                    List<int> myRentalID = new List<int>();
+
+                   foreach(Rental item in myRental)
+                    {
+                        if(item.AppUserID == appUser[0].ID)
+                        {
+                            myRentalID.Add(item.ID);
+                        }
+                        
+                        
+
+                    }
+
+                    List<UserRental> userRental = _userRental.GetActives();
+
+                    List<int> userRentalID = new List<int>();
+
+                    foreach (UserRental item in userRental)
+                    {
+                        foreach (int s in myRentalID)
+                        {
+                            if(item.RentalID == s)
+                            {
+                                userRentalID.Add(item.VehicleID);
+                            }
+
+                        }
+
+                       
+
+
+
+                    }
+
+
+                   
+
+
+
+
+                    foreach (int item in userRentalID)
+                    {
+                       
+                        
+                           
+                            
+                                vehicle.Add(_vehicle.FirstOrDefault(x => x.ID == item));
+
+
+                        confrim = 1;
+                        
+
+                    }
+
+
+
+
+
+                }
+
                 VehicleVM VVM = new VehicleVM()
                 {
                     Users = appUser,
+                    Vehicles = vehicle,
+                    Confirm = confrim,
                 };
 
                 return View(VVM);
@@ -862,19 +936,28 @@ namespace Project.MVCUI.Areas.Home.Controllers
 
                 _vehicle.Update(vehicle);
 
+                TempData["result"] = "car successfully rented";
+
+                return RedirectToAction("FinalPaymentConfirm");
+
+
 
             }
 
+            TempData["result"] = "car could not rent";
 
 
-            
-            
 
-                
+            return RedirectToAction("AcountInfo");
 
 
-            return View();
+
+
+
         }
+
+
+       
 
         
         

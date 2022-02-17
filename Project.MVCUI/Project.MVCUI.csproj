@@ -140,6 +140,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\AuthenticationClasses\AdminAuthentication.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Home\ConsumerDTO\PaymentDTO.cs" />
     <Compile Include="Areas\Home\Controllers\HomeController.cs" />
@@ -351,6 +352,9 @@
     <Content Include="Areas\Admin\Views\Admin\AddVehicle.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\ListVehicle.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\AdminLogin.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AddAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\ListAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\UpdateAdmin.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Project.Entities.Models;
 using Project.MVCUI.Tools;
+using Project.MVCUI.Areas.Admin.AuthenticationClasses;
 
 namespace Project.MVCUI.Areas.Admin.Controllers
 {
@@ -37,9 +38,12 @@ namespace Project.MVCUI.Areas.Admin.Controllers
             _userRental = new UserRentalRepository();
         }
 
-
+        
         public ActionResult AdminLogin()
         {
+            Session.Remove("admin");
+
+
             return View();
         }
 
@@ -66,7 +70,7 @@ namespace Project.MVCUI.Areas.Admin.Controllers
             
         }
 
-
+        [AdminAuthentication]
         // GET: Admin/Admin
         public ActionResult AddVehicle()
         {
@@ -178,7 +182,7 @@ namespace Project.MVCUI.Areas.Admin.Controllers
             return View();
         }
 
-
+        [AdminAuthentication]
         public ActionResult ListVehicle()
         {
             List<AppUser> appUser = new List<AppUser>();
@@ -202,7 +206,7 @@ namespace Project.MVCUI.Areas.Admin.Controllers
 
         }
 
-
+        [AdminAuthentication]
         public ActionResult UpdateVehicle()
         {
             return View();
@@ -260,7 +264,7 @@ namespace Project.MVCUI.Areas.Admin.Controllers
 
             return RedirectToAction("ListVehicle");
         }
-
+        [AdminAuthentication]
         public ActionResult DeleteVehicle(int id)
         {
             Vehicle vehicle = _vehicle.FirstOrDefault(x => x.ID == id);
@@ -269,15 +273,118 @@ namespace Project.MVCUI.Areas.Admin.Controllers
             {
                 _vehicle.Delete(_vehicle.Find(id));
 
-                TempData["result"] = "car deleted successfully";
+                TempData["myresult"] = "car deleted successfully";
 
             }
 
-            TempData["result"] = "the car could not be deleted because its use";
+            TempData["myresult"] = "the car could not be deleted because its use";
 
 
 
             return RedirectToAction("ListVehicle");
+        }
+
+        [AdminAuthentication]
+
+        public ActionResult AddAdmin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult AddAdmin(string userName, string password, string firstName, string lastName, string email, DateTime birthday, string idNumber, string lisenceNumber)
+        {
+            if (_appUser.Any(x => x.UserName == userName))
+            {
+                TempData["AlreadyHave"] = "username already taken";
+                return View();
+
+
+
+            }
+
+            else if (_profile.Any(x => x.Email == email))
+            {
+                TempData["AlreadyHave"] = "Email already taken";
+                return View();
+            }
+
+
+
+            UserProfile userProfile = new UserProfile()
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Email = email,
+                BirthDay = birthday,
+                IdentificationNumber = idNumber,
+                LisenceNumber = lisenceNumber,
+
+
+            };
+
+            AppUser appUser = new AppUser()
+            {
+                UserName = userName,
+                Password = password,
+                Role = Entities.Enums.UserRole.Admin,
+                UserProfile = userProfile,
+            };
+
+            _appUser.Add(appUser);
+
+            TempData["AlreadyHave"] = "Registration Successful";
+
+            return View();
+        }
+
+        [AdminAuthentication]
+        public ActionResult ListAdmin()
+        {
+            UserVM userVM = new UserVM()
+            {
+                Users = _appUser.Where(x => x.Role == Entities.Enums.UserRole.Admin && x.Status != Entities.Enums.DataStatus.Deleted),
+            };
+
+
+            return View(userVM);
+        }
+        [AdminAuthentication]
+        public ActionResult UpdateAdmin(int id)
+        {
+            UserVM UVM = new UserVM()
+            {
+                User = _appUser.Find(id)
+            };
+
+
+            return View(UVM);
+        }
+
+        [HttpPost]
+
+        public ActionResult UpdateAdmin(AppUser user)
+        {
+
+            user.Role = Entities.Enums.UserRole.Admin;
+            
+            _appUser.Update(user);
+
+
+            return RedirectToAction("ListAdmin");
+        }
+
+
+
+
+
+        [AdminAuthentication]
+        public ActionResult DeleteAdmin(int id)
+        {
+            _appUser.Delete(_appUser.Find(id));
+
+            return RedirectToAction("ListAdmin");
         }
     }
 }
