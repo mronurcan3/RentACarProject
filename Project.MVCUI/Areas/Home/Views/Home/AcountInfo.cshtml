@@ -402,14 +402,14 @@
                             decimal balance = 0;
 
 
-                            if (Model.User.Count == 1)
+                            if (Model.Users.Count == 1)
                             {
 
-                                firstName = Model.User[0].UserProfile.FirstName;
+                                firstName = Model.Users[0].UserProfile.FirstName;
 
-                                lastName = Model.User[0].UserProfile.LastName;
+                                lastName = Model.Users[0].UserProfile.LastName;
 
-                                balance = Model.User[0].UserProfile.Balance;
+                                balance = Model.Users[0].UserProfile.Balance;
 
                             }
 
@@ -526,20 +526,22 @@
 
         </div>
     </nav>
+
+
     <div class=" ml-4 grid grid-raws-3 uppercase rounded-md border-4 border-lime-500" style="width:300px; height:250px">
         <div>
             <label class="text-2xl">Name:</label>
-            <label class=" text-xl">@Model.User[0].UserProfile.FirstName</label>
+            <label class=" text-xl">@Model.Users[0].UserProfile.FirstName</label>
         </div>
         <hr />
         <div>
             <label class="text-2xl">Last Name:</label>
-            <label class=" text-xl">@Model.User[0].UserProfile.LastName</label>
+            <label class=" text-xl">@Model.Users[0].UserProfile.LastName</label>
         </div>
         <hr />
         <div>
             <label class="text-2xl">Balance:</label>
-            <label class=" text-xl">@Model.User[0].UserProfile.Balance</label>
+            <label class=" text-xl">@Model.Users[0].UserProfile.Balance</label>
         </div>
         <hr />
 
@@ -549,65 +551,84 @@
     @using (Html.BeginForm("AcountInfo", "Home", FormMethod.Post))
     {<div class=" mt-4  ml-4  uppercase rounded-md border-4 border-lime-500" style="width:400px; height:350px">
 
-    <div class="flex flex-raw-2">
-        <div class="grid grid-raw-6">
+            <div class="flex flex-raw-2">
+                <div class="grid grid-raw-6">
 
-            <label  class="mt-2">Card Number</label>
+                    <label class="mt-2">Card Number</label>
 
-            <label class="mt-2">Full Name</label>
+                    <label class="mt-2">Full Name</label>
 
-            <label class="mt-2">CVV</label>
+                    <label class="mt-2">CVV</label>
 
-            <label class="mt-2">CardExpiryYear</label>
+                    <label class="mt-2">CardExpiryYear</label>
 
-            <label class="mt-2">CardExpiryMonth</label>
+                    <label class="mt-2">CardExpiryMonth</label>
 
-            <label class="mt-2">Balance</label>
+                    <label class="mt-2">Balance</label>
+
+
+                </div>
+
+                <div class="grid grid-raw-6 ml-2">
+
+
+                    <input name="cardUserName" id="CardUserName" class="mt-2  bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
+
+                    <input name="securityNumber" id="SecurityNumber" class="mt-2  bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
+
+
+                    <input name="cardNumber" id="CardNumber" class=" mt-2 bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
+
+                    <input name="cardExpiryMonth" id="CardExpiryMonth" class="mt-2 bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
+
+
+
+                    <input name="cardExpiryYear" id="CardExpiryYear" class="mt-2 bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
+
+
+
+                    <input name="shoppingPrice" id="ShoppingPrice" class="mt-2  bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
+
+                </div>
+            </div>
+
+            <button name="userID" value="@Model.Users[0].ID" class="w-72 mt-4 ml-4 text-teal-300  bg-teal-700 hover:bg-emerald-400 font-bold hover:text-cyan-900 py-2 px-4 rounded  " style="height:50px;">
+                Add Money
+            </button>
+
+            <div class="mt-48">
+                <label class="text-2xl">@TempData["ConfirmStatus"]</label>
+            </div>
+
+
+
+
 
 
         </div>
-
-        <div class="grid grid-raw-6 ml-2">
-
-
-            <input name="cardUserName" id="CardUserName" class="mt-2  bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
-
-            <input name="securityNumber" id="SecurityNumber" class="mt-2  bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
-
-            
-            <input name="cardNumber" id="CardNumber" class=" mt-2 bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
-
-            <input name="cardExpiryMonth" id="CardExpiryMonth" class="mt-2 bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
-
-
-
-            <input name="cardExpiryYear" id="CardExpiryYear" class="mt-2 bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
-
-
-
-            <input name="shoppingPrice" id="ShoppingPrice" class="mt-2  bg-cyan-300 rounded-md border-2 border-purple-800" type="text" />
-
-        </div>
-    </div>
-
-    <button name="userID" value="@Model.User[0].ID" class="w-72 mt-4 ml-4 text-teal-300  bg-teal-700 hover:bg-emerald-400 font-bold hover:text-cyan-900 py-2 px-4 rounded  " style="height:50px;">
-        Add Money
-    </button>
-
-    <div class="mt-48">
-        <label class="text-2xl">@TempData["ConfirmStatus"]</label>
-    </div>
-
-
-
-
-
-
-</div>
 
 
 
     }
+
+    <div>
+        @{
+            if (Model.Confirm == 1)
+            {
+
+
+                <label>My Rental Cars</label>
+
+                foreach (Vehicle item in Model.Vehicles)
+                {
+                    <label>@item.Brand</label>
+                }
+            }
+
+        }
+    </div>
+
+    @TempData["myresult"]
 
     <script>
 

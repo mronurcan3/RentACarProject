@@ -1,0 +1,65 @@
+﻿@model UserVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UpdateAdmin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(x => x.User.ID)
+            <div>
+                @Html.TextBoxFor(x => x.User.UserName, new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.TextBoxFor(x => x.User.Password, new { @class = "form-control" })
+            </div>
+
+            <div>
+                @Html.TextBoxFor(x => x.User.UserProfile.FirstName, new { @class = "form-control" })
+            </div>
+
+            <div>
+                @Html.TextBoxFor(x => x.User.UserProfile.LastName, new { @class = "form-control" })
+            </div>
+
+            <div>
+                @Html.TextBoxFor(x => x.User.UserProfile.Email, new { @class = "form-control" })
+            </div>
+
+            <div>
+                @Html.TextBoxFor(x => x.User.UserProfile.Balance, new { @class = "form-control" })
+            </div>
+
+            <div>
+                @Html.TextBoxFor(x => x.User.UserProfile.BirthDay, new { @class = "form-control" })
+            </div>
+
+            <div>
+                @Html.TextBoxFor(x => x.User.UserProfile.IdentificationNumber, new { @class = "form-control" })
+            </div>
+
+            <div>
+                @Html.TextBoxFor(x => x.User.UserProfile.LisenceNumber, new { @class = "form-control" })
+            </div>
+
+            <div>
+                <button class="btn btn-primary">
+                    Update
+                </button>
+            </div>
+        }
+
+    </div>
+</body>
+</html>

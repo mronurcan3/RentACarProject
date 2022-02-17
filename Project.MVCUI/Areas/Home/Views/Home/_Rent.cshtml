@@ -9,6 +9,8 @@
         if (Session["user"] == null)
         {
             color = "bg-white";
+
+           
         }
 
         else
@@ -57,7 +59,7 @@
                 using (Html.BeginForm("FinalRent", "Home", FormMethod.Post))
                 {
 
-
+                    
             <div class="grid grid-raw-4 text-2xl">
                 <div class="ml-8"> for @Model.Date @day</div>
 
@@ -79,7 +81,14 @@
                     }
                 }
 
+            
+                
+                  
+           
+
             }
+
+        
 
     </div>
    
